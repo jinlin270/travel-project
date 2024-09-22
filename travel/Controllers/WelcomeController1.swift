@@ -17,16 +17,12 @@ class WelcomeController1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add the items :)
-        view.addSubview(appLabel)
-        view.addSubview(carImageView)
-
         // Set the style for the label
         
         setupLineView()
         setupAppLabel()
         setupcarImageView()
-        title = "ViewController One"
+//        title = "ViewController One"
         view.backgroundColor = .systemBackground
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
@@ -44,6 +40,7 @@ class WelcomeController1: UIViewController {
         appLabel.font = UIFont.boldSystemFont(ofSize: 32)
         appLabel.textAlignment = .center
         appLabel.textColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1.0)
+        view.addSubview(appLabel)
         
         NSLayoutConstraint.activate([
             appLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 395),
@@ -94,5 +91,4 @@ class WelcomeController1: UIViewController {
         let welcomeController2 = WelcomeController2()
         navigationController?.pushViewController(welcomeController2, animated: true)
     }
-
 }

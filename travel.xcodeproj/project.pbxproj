@@ -14,6 +14,7 @@
 		20076E172C8777AA00D79D60 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 20076E162C8777AA00D79D60 /* Base */; };
 		20076E252C93DCB600D79D60 /* WelcomeController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20076E242C93DCB600D79D60 /* WelcomeController2.swift */; };
 		20076E272C93DCD700D79D60 /* WelcomeController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20076E262C93DCD700D79D60 /* WelcomeController1.swift */; };
+		20076E2B2C9FBA8E00D79D60 /* SignUpController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20076E2A2C9FBA8E00D79D60 /* SignUpController1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		20076E182C8777AA00D79D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20076E242C93DCB600D79D60 /* WelcomeController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController2.swift; sourceTree = "<group>"; };
 		20076E262C93DCD700D79D60 /* WelcomeController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController1.swift; sourceTree = "<group>"; };
+		20076E2A2C9FBA8E00D79D60 /* SignUpController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				20076E242C93DCB600D79D60 /* WelcomeController2.swift */,
 				20076E262C93DCD700D79D60 /* WelcomeController1.swift */,
+				20076E2A2C9FBA8E00D79D60 /* SignUpController1.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				20076E272C93DCD700D79D60 /* WelcomeController1.swift in Sources */,
 				20076E0B2C8777A900D79D60 /* AppDelegate.swift in Sources */,
 				20076E252C93DCB600D79D60 /* WelcomeController2.swift in Sources */,
+				20076E2B2C9FBA8E00D79D60 /* SignUpController1.swift in Sources */,
 				20076E0D2C8777A900D79D60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
