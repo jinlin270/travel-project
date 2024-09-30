@@ -20,9 +20,8 @@ class WelcomeController1: UIViewController {
         // Set the style for the label
         
         setupLineView()
-        setupAppLabel()
+//        setupAppLabel()
         setupcarImageView()
-//        title = "ViewController One"
         view.backgroundColor = .systemBackground
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
@@ -34,22 +33,22 @@ class WelcomeController1: UIViewController {
     // MARK: - Properties (data)
     private var text: String = "CHANGE ME"
     
-    private func setupAppLabel(){
-        appLabel.translatesAutoresizingMaskIntoConstraints = false
-        appLabel.text = "StuGo"
-        appLabel.font = UIFont.boldSystemFont(ofSize: 32)
-        appLabel.textAlignment = .center
-        appLabel.textColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1.0)
-        view.addSubview(appLabel)
-        
-        NSLayoutConstraint.activate([
-            appLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 395),
-            appLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            appLabel.widthAnchor.constraint(equalToConstant: 97),
-            appLabel.heightAnchor.constraint(equalToConstant: 40)
-
-        ])
-    }
+//    private func setupAppLabel(){
+//        appLabel.translatesAutoresizingMaskIntoConstraints = false
+//        appLabel.text = "StuGo"
+//        appLabel.font = UIFont.boldSystemFont(ofSize: 32)
+//        appLabel.textAlignment = .center
+//        appLabel.textColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1.0)
+//        view.addSubview(appLabel)
+//        
+//        NSLayoutConstraint.activate([
+//            appLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 395),
+//            appLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            appLabel.widthAnchor.constraint(equalToConstant: 97),
+//            appLabel.heightAnchor.constraint(equalToConstant: 40)
+//
+//        ])
+//    }
     
     private func setupcarImageView() {
             carImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,10 +58,10 @@ class WelcomeController1: UIViewController {
             carImageView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
-                carImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 483),
+                carImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 472),
                 carImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                carImageView.widthAnchor.constraint(equalToConstant: 56),
-                carImageView.heightAnchor.constraint(equalToConstant: 55.67)
+//                carImageView.widthAnchor.constraint(equalToConstant: 56),
+//                carImageView.heightAnchor.constraint(equalToConstant: 55.67)
             ])
         }
     
