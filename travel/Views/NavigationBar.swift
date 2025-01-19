@@ -62,15 +62,12 @@ struct BottomNavigationBar: View {
                         }.frame(maxWidth: .infinity)
                     }
                 }
+                .frame(height: 60)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 0)
-                .frame(maxWidth: .infinity, maxHeight: 97, alignment: .center)
+                .padding(.top, 12)
+                .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
                 .background(Constants.blue)
-                .overlay(
-                    Rectangle()
-                        .inset(by: -0.75)
-                        .stroke(Constants.main4, lineWidth: 1.5)
-                )
             }
             .edgesIgnoringSafeArea(.bottom)
             
