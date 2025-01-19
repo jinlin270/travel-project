@@ -12,7 +12,7 @@ struct ExploreRides: View {
     @State private var NavProfile = false
     @State private var RequestRide = false
     @State private var OfferRide = false
-    @State private var isRideOffer = true
+    @State var isRideOffer = true
     @State private var showCalendar = false
     @State var selectedDate = Date()
     @State private var rideCount: Int = 0
@@ -63,34 +63,17 @@ struct ExploreRides: View {
             }
             
             ToggleView(isRideOffer: $isRideOffer).padding(.top, -30).padding(.bottom, -15)
-//            if showCalendar {
-//                Color.black.opacity(0.3)
-//                    .edgesIgnoringSafeArea(.all) // Makes the dimming cover the entire screen
-//                    .onTapGesture {
-//                        showCalendar = false // Close calendar when tapping outside
-//                    }
-//                CalendarView()
-//                    .frame(width: 400, height: 500) // Adjust the frame as needed
-//                    .padding(.top, 100)
-//                   .background(Color.white)
-//                   .cornerRadius(12)
-//                   .shadow(radius: 10)
-//                   .transition(.scale) // Optional transition effect when the calendar appears
-//                   .zIndex(1) // Ensure the calendar is in front
-//            }
+
             
            
             if isRideOffer {
                 CalendarBar(selectedDate: $selectedDate)
-                    .frame(height: 55) // Fixed height for CalendarBar
-//                    .padding(.top, -1)
+                    .frame(height: 55)
             } else {
                 RideRequestBar()
-                    .frame(height: 55) // Fixed height for RideRequestBar
-//                    .padding(.top, -30)
+                    .frame(height: 55)
             }
 
-//
             Divider()
                 .frame(height: 1)
                 .background(Color.black)
@@ -137,9 +120,14 @@ struct ExploreRides: View {
             
             ZStack{
                 
-                ScrollCardsView()
-                    .frame(maxHeight: .infinity)
-                    .frame(minHeight: 100)
+                if isRideOffer {
+                    ScrollCardsView(isRideOffer: $isRideOffer)
+                        .frame(minHeight: 100)
+                } else {
+                    ScrollRequestCardsView(isRideOffer: $isRideOffer)
+                        .frame(minHeight: 100)
+                }
+         
                 
                 Spacer()
                 

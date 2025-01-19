@@ -43,7 +43,7 @@ struct RideCardView: View {
                             .clipShape(Circle()) // Make the image circular
                             .overlay(Circle().stroke(Color.black, lineWidth: 2))
                             .onAppear {
-                                imageFetcher.fetchImage(from: ride_card.profilePicURL)
+                                imageFetcher.fetchImage(from: ride_card.driver.profilePicURL)
                             }
                     }
                     
@@ -51,7 +51,7 @@ struct RideCardView: View {
                     VStack{
                         //VStack2 (name and review)
                         HStack{
-                            Text(ride_card.name)
+                            Text(ride_card.driver.name)
                                 .font(.system(size: 16, weight: .bold))
                                 .foregroundColor(.black)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -67,14 +67,14 @@ struct RideCardView: View {
                             Image("star")
                                 .resizable()
                                 .frame(width: 12, height: 12)
-                            Text(String(ride_card.rating))
+                            Text(String(ride_card.driver.rating))
                                 .font(.system(size: 12))
                                 .foregroundColor(.black)
                             Image("dot")
                                 .resizable()
                                 .frame(width: 3, height: 3)
                             
-                            Text("\(ride_card.numRatings) reviews")
+                            Text("\(ride_card.driver.numRatings) reviews")
                                 .font(.system(size: 12))
                                 .foregroundColor(.black)
                             
@@ -100,7 +100,7 @@ struct RideCardView: View {
                 HStack{//HStack2 (rest of card)
                     VStack{ //VStack3 (time and location)
                         HStack{//HStack 2.1 (time)
-                            Text("\(ride_card.departureTime)")
+                            Text("\(DateFormatter.timeFormatter.string(from: ride_card.departureTime))")
                                 .font(.system(size: 14, weight: .bold))
                                 .foregroundColor(.black)
                             
@@ -112,7 +112,7 @@ struct RideCardView: View {
                             
                             Spacer()
                             
-                            Text("\(ride_card.arrivalTime)")
+                            Text("\(DateFormatter.timeFormatter.string(from: ride_card.arrivalTime))")
                                 .font(.system(size: 14, weight: .bold))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.trailing)
@@ -203,8 +203,8 @@ struct RideCardView: View {
 }
     
 
-
-let ride_card1: RideCard = RideCard(id:1, name: "Lin Jin", rating:5.0, numRatings: 19, bookmarked: false, price: 15, departureTime: "1:00 PM", arrivalTime: "5:00 PM", meetingLocation: "161 Ho Plaza, Ithaca, NY", destination: "So Ho, New York, NY", gender_preference: "All females", availableSeats: 2, totalSeats: 4, profilePicURL: "https://i.scdn.co/image/ab67616100005174bcb1c184c322688f10cdce7a")
+let user: User = User(id: 1, name: "Lin Jin", rating: 5.0, numRatings:5, profilePicURL: "https://i.scdn.co/image/ab67616100005174bcb1c184c322688f10cdce7a", loudness: 5, musicPreference: "ROCK AND ROLLLL", funFact: "pokemon :)", phoneNumber: "xxx-xxx-xxxx", pronouns: "She/Her", grade: "She/Her", location: "Senior", email: "linjin@gmail.com")
+let ride_card1: RideCard = RideCard(id:1, driver: user,  bookmarked: false, price: 15, departureTime: Date(), arrivalTime: Date(), meetingLocation: "161 Ho Plaza, Ithaca, NY", destination: "So Ho, New York, NY", gender_preference: "All females", availableSeats: 2, totalSeats: 4)
 
 struct RideCard_Previews: PreviewProvider {
     static var previews: some View {

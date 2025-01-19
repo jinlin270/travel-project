@@ -35,6 +35,11 @@
 		200FF9512D3CE5EF00E5A017 /* CalendarBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9502D3CE5E800E5A017 /* CalendarBar.swift */; };
 		200FF9532D3CE60C00E5A017 /* RideRequestBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9522D3CE60900E5A017 /* RideRequestBar.swift */; };
 		200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9542D3CF2FB00E5A017 /* ToggleView.swift */; };
+		20BA9A492D3D9DDC006E44E9 /* RequestRideCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A482D3D9DD1006E44E9 /* RequestRideCard.swift */; };
+		20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4A2D3D9DF1006E44E9 /* User.swift */; };
+		20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */; };
+		20BA9A4F2D3DA7F2006E44E9 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */; };
+		20BA9A512D3DB2E6006E44E9 /* ScrollRequestCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A502D3DB2DC006E44E9 /* ScrollRequestCardsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +73,11 @@
 		200FF9502D3CE5E800E5A017 /* CalendarBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBar.swift; sourceTree = "<group>"; };
 		200FF9522D3CE60900E5A017 /* RideRequestBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestBar.swift; sourceTree = "<group>"; };
 		200FF9542D3CF2FB00E5A017 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		20BA9A482D3D9DD1006E44E9 /* RequestRideCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideCard.swift; sourceTree = "<group>"; };
+		20BA9A4A2D3D9DF1006E44E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideCardView.swift; sourceTree = "<group>"; };
+		20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		20BA9A502D3DB2DC006E44E9 /* ScrollRequestCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollRequestCardsView.swift; sourceTree = "<group>"; };
 		CE54AF26BEA8F3DCFF626DC8 /* Pods_travel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_travel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,6 +156,7 @@
 				200FF9302D3AF2B900E5A017 /* UploadPicture.swift */,
 				200FF9282D21C7C800E5A017 /* NavigationButtons.swift */,
 				200FF9442D3C95CD00E5A017 /* RideCardView.swift */,
+				20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +186,7 @@
 		200FF9342D3C44F400E5A017 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				20BA9A502D3DB2DC006E44E9 /* ScrollRequestCardsView.swift */,
 				200FF9482D3C97DF00E5A017 /* ScrollCardsView.swift */,
 				200FF9462D3C97C900E5A017 /* InfiniteScroll.swift */,
 				200FF9372D3C5D1700E5A017 /* Explore.swift */,
@@ -185,6 +197,9 @@
 		200FF93F2D3C755F00E5A017 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */,
+				20BA9A4A2D3D9DF1006E44E9 /* User.swift */,
+				20BA9A482D3D9DD1006E44E9 /* RequestRideCard.swift */,
 				200FF9422D3C95BD00E5A017 /* RideCard.swift */,
 				200FF9402D3C756B00E5A017 /* ImageFetcher.swift */,
 			);
@@ -268,6 +283,7 @@
 				200FF9472D3C97CD00E5A017 /* InfiniteScroll.swift in Sources */,
 				200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */,
 				200FF9292D21C7CE00E5A017 /* NavigationButtons.swift in Sources */,
+				20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */,
 				200FF92F2D3AED9600E5A017 /* OnboardingProfile.swift in Sources */,
 				200FF9412D3C757200E5A017 /* ImageFetcher.swift in Sources */,
 				200FF9512D3CE5EF00E5A017 /* CalendarBar.swift in Sources */,
@@ -277,13 +293,17 @@
 				20076E252C93DCB600D79D60 /* WelcomeController2.swift in Sources */,
 				20076E5D2CB35DD300D79D60 /* OnboardingController2.swift in Sources */,
 				200FF9452D3C95D700E5A017 /* RideCardView.swift in Sources */,
+				20BA9A512D3DB2E6006E44E9 /* ScrollRequestCardsView.swift in Sources */,
 				200FF9492D3C97E400E5A017 /* ScrollCardsView.swift in Sources */,
 				20076E372CAA4FCD00D79D60 /* WelcomeController4.swift in Sources */,
 				200FF94D2D3CD2A900E5A017 /* Calendar.swift in Sources */,
+				20BA9A492D3D9DDC006E44E9 /* RequestRideCard.swift in Sources */,
 				200FF9312D3AF2C400E5A017 /* UploadPicture.swift in Sources */,
 				200FF9432D3C95C600E5A017 /* RideCard.swift in Sources */,
+				20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */,
 				20076E352CAA2BE000D79D60 /* WelcomeController3.swift in Sources */,
 				20076E3A2CAB83AF00D79D60 /* OnboardingController1.swift in Sources */,
+				20BA9A4F2D3DA7F2006E44E9 /* DateFormatter.swift in Sources */,
 				200FF94B2D3CA11600E5A017 /* SearchBar.swift in Sources */,
 				200FF92B2D3AE28400E5A017 /* OnboardingController3.swift in Sources */,
 				20076E0D2C8777A900D79D60 /* SceneDelegate.swift in Sources */,

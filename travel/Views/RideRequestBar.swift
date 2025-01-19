@@ -136,7 +136,7 @@ struct RideRequestBar: View {
                     HStack {
                         Divider()
                             .frame(width: 74, height: 5)
-                            .background(Color.gray)
+                            .background(Color.black)
                             .padding(.top, -8)
                     }
                     .padding(.leading, -178) // Offset to align with In-City
@@ -144,7 +144,7 @@ struct RideRequestBar: View {
                     HStack {
                         Divider()
                             .frame(width: 74, height: 5)
-                            .background(Color.gray)
+                            .background(Color.black)
                             .padding(.top, -8)
                     }
                     .padding(.leading, -85) // Offset to align with Out-of-City
@@ -152,7 +152,7 @@ struct RideRequestBar: View {
                     HStack {
                         Divider()
                             .frame(width: 74, height: 5)
-                            .background(Color.gray)
+                            .background(Color.black)
                             .padding(.top, -8)
                     }
                     .padding(.leading, 95) // Offset to align with In-State
@@ -160,7 +160,7 @@ struct RideRequestBar: View {
                     HStack {
                         Divider()
                             .frame(width: 74, height: 5)
-                            .background(Color.gray)
+                            .background(Color.black)
                             .padding(.top, -8)
                     }
                     .padding(.leading, 280) // Offset to align with Out-of-State

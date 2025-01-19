@@ -1,13 +1,13 @@
 //
-//  ScrollCardsView.swift
+//  ScrollRequestCardsView.swift
 //  travel
 //
-//  Created by Lin Jin on 1/18/25.
+//  Created by Lin Jin on 1/19/25.
 //
 
 import SwiftUI
 
-struct ScrollCardsView: View {
+struct ScrollRequestCardsView: View {
     @Binding var isRideOffer : Bool
     @StateObject var viewModel: InfiniteScroll
     
@@ -25,12 +25,12 @@ struct ScrollCardsView: View {
             } else {
                 ScrollView {
                     LazyVStack {
-                        ForEach(viewModel.rideCards, id: \.id) { rideCard in
-                            RideCardView(ride_card: rideCard)
+                        ForEach(viewModel.RequestrideCards, id: \.id) { rideCard in
+                            RequestRideCardView(ride_card: rideCard)
                                 .padding()
                                 .onAppear {
                                     // Trigger data fetching when the last item appears
-                                    if rideCard == viewModel.rideCards.last {
+                                    if rideCard == viewModel.RequestrideCards.last {
                                         viewModel.checkIfNeedMoreData()
                                     }
                                 }
@@ -47,8 +47,8 @@ struct ScrollCardsView: View {
             }
         }
         .onAppear {
-            if viewModel.rideCards.isEmpty {
-                viewModel.fetchRideCards() // Initial load when the view appears
+            if viewModel.RequestrideCards.isEmpty {
+                viewModel.fetchRequestRideCards() // Initial load when the view appears
             }
         }
     }
