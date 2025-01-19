@@ -17,7 +17,37 @@ class InfiniteScroll: ObservableObject {
     
     init(isRideOffer: Binding<Bool>) {
         self.user1 = User(
-            id: 1,
+            id: 2,
+            name: "Lin Jin",
+            rating: 5.0,
+            numRatings: 5,
+            profilePicURL: "https://i.scdn.co/image/ab67616100005174bcb1c184c322688f10cdce7a",
+            loudness: 5,
+            musicPreference: "ROCK AND ROLLLL",
+            funFact: "pokemon :)",
+            phoneNumber: "xxx-xxx-xxxx",
+            pronouns: "She/Her",
+            grade: "Senior",
+            location: "Cornell University",
+            email: "linjin@gmail.com"
+        )
+        let user2 = User(
+            id: 3,
+            name: "Lin Jin",
+            rating: 5.0,
+            numRatings: 5,
+            profilePicURL: "https://i.scdn.co/image/ab67616100005174bcb1c184c322688f10cdce7a",
+            loudness: 5,
+            musicPreference: "ROCK AND ROLLLL",
+            funFact: "pokemon :)",
+            phoneNumber: "xxx-xxx-xxxx",
+            pronouns: "She/Her",
+            grade: "Senior",
+            location: "Cornell University",
+            email: "linjin@gmail.com"
+        )
+        let user3 = User(
+            id: 4,
             name: "Lin Jin",
             rating: 5.0,
             numRatings: 5,
@@ -47,8 +77,8 @@ class InfiniteScroll: ObservableObject {
                 totalSeats: 4
             )
         ]
-        self.RequestrideCards = [RequestRideCard(id: 1, guests: [user], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female"),
-                                 RequestRideCard(id: 2, guests: [user], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female"),
+        self.RequestrideCards = [RequestRideCard(id: 1, guests: [user, user1], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female"),
+                                 RequestRideCard(id: 2, guests: [user, user1, user2, user3], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female"),
                                  RequestRideCard(id: 3, guests: [user], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female")]
         _isRideOffer = isRideOffer
     }

@@ -95,6 +95,8 @@ struct RequestRideCardView: View {
                         Text("Guests: \(ride_card.guests.count)")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.black)
+                        profilePicsView(for: ride_card.guests)
+                        
                     }.frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 16)
                         .padding(.trailing, 16)
