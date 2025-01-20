@@ -41,6 +41,7 @@
 		20BA9A5B2D3DBCE1006E44E9 /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A5A2D3DBCD5006E44E9 /* ProfilePageView.swift */; };
 		20BA9A5D2D3EB932006E44E9 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A5C2D3EB930006E44E9 /* Buttons.swift */; };
 		20BA9A5F2D3EBB90006E44E9 /* TripInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A5E2D3EBB89006E44E9 /* TripInfo.swift */; };
+		20BA9A612D3ECB66006E44E9 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A602D3ECB64006E44E9 /* Slider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		20BA9A5A2D3DBCD5006E44E9 /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
 		20BA9A5C2D3EB930006E44E9 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		20BA9A5E2D3EBB89006E44E9 /* TripInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfo.swift; sourceTree = "<group>"; };
+		20BA9A602D3ECB64006E44E9 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		CE54AF26BEA8F3DCFF626DC8 /* Pods_travel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_travel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 		20076E302CA0E23A00D79D60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20BA9A602D3ECB64006E44E9 /* Slider.swift */,
 				20BA9A562D3DB852006E44E9 /* ViewGuests.swift */,
 				200FF9352D3C456400E5A017 /* NavigationBar.swift */,
 				200FF9302D3AF2B900E5A017 /* UploadPicture.swift */,
@@ -309,6 +312,7 @@
 				200FF9532D3CE60C00E5A017 /* RideRequestBar.swift in Sources */,
 				200FF9472D3C97CD00E5A017 /* InfiniteScroll.swift in Sources */,
 				200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */,
+				20BA9A612D3ECB66006E44E9 /* Slider.swift in Sources */,
 				200FF9292D21C7CE00E5A017 /* NavigationButtons.swift in Sources */,
 				20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */,
 				200FF92F2D3AED9600E5A017 /* OnboardingProfile.swift in Sources */,

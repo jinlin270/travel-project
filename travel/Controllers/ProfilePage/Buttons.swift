@@ -15,7 +15,7 @@ struct RoundedButton: View {
         Button(action: {
             // Add button action here
         }) {
-            HStack(spacing: 8) {
+            HStack(spacing: 4) {
                 Image(imageName) // Use the provided image name
                     .resizable()
                     .frame(width: 30, height: 30)
@@ -23,10 +23,12 @@ struct RoundedButton: View {
                     .font(.system(size: 12))
                     .foregroundColor(.black)
                     .frame(alignment: .leading)
+                    .multilineTextAlignment(.leading)
             }
-            .padding()
+            .padding(12)
         }
-        .frame(height: 50) // Adjust height as needed
+//        .frame(height: 56)
+        .frame(maxWidth: 115) // Adjust height as needed
         .background(Color.clear)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
