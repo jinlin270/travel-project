@@ -120,14 +120,10 @@ struct ExploreRides: View {
             
             ZStack{
                 
-                if isRideOffer {
-                    ScrollCardsView(isRideOffer: $isRideOffer)
-                        .frame(minHeight: 100)
-                } else {
-                    ScrollRequestCardsView(isRideOffer: $isRideOffer)
-                        .frame(minHeight: 100)
-                }
-         
+          
+                ScrollCardsView(isRideOffer: $isRideOffer)
+                    .frame(minHeight: 100)
+               
                 
                 Spacer()
                 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct RideCardView: View {
-    var ride_card: RideCard
+    var ride_card: TripInfo
     @StateObject private var imageFetcher = ImageFetcher()
     
     var body: some View {
@@ -204,7 +204,7 @@ struct RideCardView: View {
     
 
 let user: User = User(id: 1, name: "Lin Jin", rating: 5.0, numRatings:5, profilePicURL: "https://i.scdn.co/image/ab67616100005174bcb1c184c322688f10cdce7a", loudness: 5, musicPreference: "ROCK AND ROLLLL", funFact: "pokemon :)", phoneNumber: "xxx-xxx-xxxx", pronouns: "She/Her", grade: "She/Her", location: "Senior", email: "linjin@gmail.com")
-let ride_card1: RideCard = RideCard(id:1, driver: user,  bookmarked: false, price: 15, departureTime: Date(), arrivalTime: Date(), meetingLocation: "161 Ho Plaza, Ithaca, NY", destination: "So Ho, New York, NY", gender_preference: "All females", availableSeats: 2, totalSeats: 4)
+let ride_card1: TripInfo = TripInfo(id:1, driver: user,  bookmarked: false, price: 15, departureTime: Date(), arrivalTime: Date(), meetingLocation: "161 Ho Plaza, Ithaca, NY", destination: "So Ho, New York, NY", gender_preference: "All females", availableSeats: 2, totalSeats: 4)
 
 struct RideCard_Previews: PreviewProvider {
     static var previews: some View {

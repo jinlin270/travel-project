@@ -25,6 +25,7 @@ struct ScrollCardsView: View {
             } else {
                 ScrollView {
                     LazyVStack {
+                        if isRideOffer{
                         ForEach(viewModel.rideCards, id: \.id) { rideCard in
                             RideCardView(ride_card: rideCard)
                                 .padding()
@@ -34,6 +35,17 @@ struct ScrollCardsView: View {
                                         viewModel.checkIfNeedMoreData()
                                     }
                                 }
+                        }}else{
+                            ForEach(viewModel.rideCards, id: \.id) { rideCard in
+                                RequestRideCardView(ride_card: rideCard)
+                                    .padding()
+                                    .onAppear {
+                                        // Trigger data fetching when the last item appears
+                                        if rideCard == viewModel.rideCards.last {
+                                            viewModel.checkIfNeedMoreData()
+                                        }
+                                    }
+                            }
                         }
                     }
                 }

@@ -1,12 +1,13 @@
 //
-//  RideCard.swift
+//  TripInfo.swift
 //  travel
 //
-//  Created by Lin Jin on 1/18/25.
+//  Created by Lin Jin on 1/20/25.
 //
+
 import SwiftUI
 
-struct RideCard: Identifiable, Decodable, Equatable {
+struct TripInfo: Identifiable, Decodable, Equatable, Encodable {
     var id: Int
     var driver: User
     var bookmarked: Bool
@@ -18,9 +19,12 @@ struct RideCard: Identifiable, Decodable, Equatable {
     var gender_preference: String
     var availableSeats: Int
     var totalSeats: Int
+    var guests: [User] = []
+    var completed: Bool = false
     
-    static func ==(lhs: RideCard, rhs: RideCard) -> Bool {
+    static func ==(lhs: TripInfo, rhs: TripInfo) -> Bool {
             return lhs.id == rhs.id
         }
 }
 
+ 

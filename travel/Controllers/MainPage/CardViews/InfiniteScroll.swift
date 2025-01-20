@@ -11,8 +11,7 @@ import Combine
 
 class InfiniteScroll: ObservableObject {
     let user1: User
-    @Published var rideCards: [RideCard]
-    @Published var RequestrideCards: [RequestRideCard]
+    @Published var rideCards: [TripInfo]
     @Binding var isRideOffer: Bool
     
     init(isRideOffer: Binding<Bool>) {
@@ -63,7 +62,7 @@ class InfiniteScroll: ObservableObject {
         )
         
         self.rideCards = [
-            RideCard(
+            TripInfo(
                 id: 1,
                 driver: user1,
                 bookmarked: false,
@@ -77,9 +76,6 @@ class InfiniteScroll: ObservableObject {
                 totalSeats: 4
             )
         ]
-        self.RequestrideCards = [RequestRideCard(id: 1, guests: [user, user1], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female"),
-                                 RequestRideCard(id: 2, guests: [user, user1, user2, user3], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female"),
-                                 RequestRideCard(id: 3, guests: [user], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female")]
         _isRideOffer = isRideOffer
     }
     
@@ -125,26 +121,16 @@ class InfiniteScroll: ObservableObject {
     
     // Fetch ride cards
     func fetchRideCards() {
-        fetchData(urlString: "https://your-api-endpoint.com/rides", page: currentPage) { [weak self] (newRides: [RideCard]) in
+        fetchData(urlString: "https://your-api-endpoint.com/rides/is_requestblabla\(isRideOffer)", page: currentPage) { [weak self] (newRides: [TripInfo]) in
             self?.rideCards.append(contentsOf: newRides)
         }
     }
     
-    // Fetch request ride cards
-    func fetchRequestRideCards() {
-        fetchData(urlString: "https://another-api-endpoint.com/rides", page: currentPage) { [weak self] (newRides: [RequestRideCard]) in
-            self?.RequestrideCards.append(contentsOf: newRides)
-        }
-    }
     
     // Trigger the data load when reaching the bottom
     func checkIfNeedMoreData() {
         if !isLoading && hasMoreData {
-            if isRideOffer {
                 fetchRideCards()
-            } else {
-                fetchRequestRideCards()
-            }
         }
     }
 }

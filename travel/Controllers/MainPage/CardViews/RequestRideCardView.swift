@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct RequestRideCardView: View {
-    var ride_card: RequestRideCard
+    var ride_card: TripInfo
     @StateObject private var imageFetcher = ImageFetcher()
     
     
@@ -30,6 +30,7 @@ struct RequestRideCardView: View {
                 HStack{//HStack 2.1 (time)
                     Text("\(ride_card.meetingLocation)")
                         .font(.system(size: 14, weight: .bold))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.black)
                         .underline()
                         .frame(maxWidth: .infinity)
@@ -62,12 +63,12 @@ struct RequestRideCardView: View {
                     .background(Color.gray)
                     .padding(.horizontal, 16)
                 
-                Spacer().frame(height:8)
+//                Spacer().frame(height:8)
                 
                 
                 VStack{ //VStack3
                     HStack{//HStack 2.1 (time)
-                        Text("\(DateFormatter.shortDateFormatter.string(from: ride_card.departureDate))")
+                        Text("\(DateFormatter.shortDateFormatter.string(from: ride_card.departureTime))")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.black)
                         
@@ -85,7 +86,7 @@ struct RequestRideCardView: View {
                     Spacer().frame(height: 8)
                     
                     HStack{
-                        Text("Expire On: \(DateFormatter.shortDateFormatter.string(from: ride_card.expireDate))")
+                        Text("Expire On: \(DateFormatter.shortDateFormatter.string(from: ride_card.arrivalTime))")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.black)
                             .multilineTextAlignment(.trailing)
@@ -133,12 +134,9 @@ struct RequestRideCardView: View {
     }
 }
     
-let ride_card2: RequestRideCard = RequestRideCard(id: 1, guests: [user], price: 16, departureDate: Date(), expireDate: Date(), meetingLocation: "121 Triphammer Rd, Syracuse, NY", destination: "Farmer Market, Ithaca, NY", gender_preference: "All Female")
-
-
 
 struct RequestRideCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RequestRideCardView(ride_card: ride_card2)
+        RequestRideCardView(ride_card: ride_card1)
     }
 }
