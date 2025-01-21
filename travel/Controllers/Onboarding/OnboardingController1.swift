@@ -70,7 +70,7 @@ struct OnboardingController1: View {
                         .cornerRadius(4)
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
-                                .stroke(Color.black, lineWidth: 1)
+                                .stroke(Constants.blue, lineWidth: 2)
                         )
                     }
                     
@@ -125,20 +125,6 @@ struct OnboardingController1: View {
     }
 }
 
-// Custom text field style to match the appearance
-struct CustomTextFieldStyle: TextFieldStyle {
-    func _body(configuration: TextField<_Label>) -> some View {
-        configuration
-            .padding(.horizontal, 16)
-            .frame(height: 56)
-            .background(Color.white)
-            .cornerRadius(4)
-            .overlay(
-                RoundedRectangle(cornerRadius: 4)
-                    .stroke(Color.black, lineWidth: 1)
-            )
-    }
-}
 
 // Preview
 struct OnboardingView_Previews: PreviewProvider {

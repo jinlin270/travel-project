@@ -36,6 +36,11 @@
 		200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9542D3CF2FB00E5A017 /* ToggleView.swift */; };
 		20738A4E2D40127A00E6B0A8 /* FilterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A4D2D40125700E6B0A8 /* FilterTextField.swift */; };
 		20738A502D40291400E6B0A8 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A4F2D40290E00E6B0A8 /* DateTextField.swift */; };
+		20738A532D4048D500E6B0A8 /* RequestRideForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A522D4048CF00E6B0A8 /* RequestRideForm.swift */; };
+		20738A552D404D3000E6B0A8 /* TextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A542D404D1A00E6B0A8 /* TextFieldViewModel.swift */; };
+		20738A572D404FEA00E6B0A8 /* CustomTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A562D404FE000E6B0A8 /* CustomTextFieldStyle.swift */; };
+		20738A592D4051EA00E6B0A8 /* FancyRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A582D4051E100E6B0A8 /* FancyRadioButton.swift */; };
+		20738A5C2D4052D800E6B0A8 /* SwappedRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A5B2D4052B500E6B0A8 /* SwappedRadioButton.swift */; };
 		20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4A2D3D9DF1006E44E9 /* User.swift */; };
 		20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */; };
 		20BA9A4F2D3DA7F2006E44E9 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */; };
@@ -78,6 +83,11 @@
 		200FF9542D3CF2FB00E5A017 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
 		20738A4D2D40125700E6B0A8 /* FilterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTextField.swift; sourceTree = "<group>"; };
 		20738A4F2D40290E00E6B0A8 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
+		20738A522D4048CF00E6B0A8 /* RequestRideForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideForm.swift; sourceTree = "<group>"; };
+		20738A542D404D1A00E6B0A8 /* TextFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewModel.swift; sourceTree = "<group>"; };
+		20738A562D404FE000E6B0A8 /* CustomTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyle.swift; sourceTree = "<group>"; };
+		20738A582D4051E100E6B0A8 /* FancyRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyRadioButton.swift; sourceTree = "<group>"; };
+		20738A5B2D4052B500E6B0A8 /* SwappedRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwappedRadioButton.swift; sourceTree = "<group>"; };
 		20BA9A4A2D3D9DF1006E44E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideCardView.swift; sourceTree = "<group>"; };
 		20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -145,6 +155,7 @@
 		20076E212C93DC9A00D79D60 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				20738A512D4048C800E6B0A8 /* RequestRide */,
 				20BA9A592D3DBCCF006E44E9 /* ProfilePage */,
 				200FF9342D3C44F400E5A017 /* MainPage */,
 				20076E3B2CAB83B900D79D60 /* Welcome */,
@@ -156,8 +167,7 @@
 		20076E302CA0E23A00D79D60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				20738A4F2D40290E00E6B0A8 /* DateTextField.swift */,
-				20738A4D2D40125700E6B0A8 /* FilterTextField.swift */,
+				20738A5A2D40524200E6B0A8 /* RadioButtons */,
 				20BA9A602D3ECB64006E44E9 /* Slider.swift */,
 				20BA9A562D3DB852006E44E9 /* ViewGuests.swift */,
 				200FF9352D3C456400E5A017 /* NavigationBar.swift */,
@@ -205,12 +215,33 @@
 		200FF93F2D3C755F00E5A017 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20738A562D404FE000E6B0A8 /* CustomTextFieldStyle.swift */,
 				20BA9A5E2D3EBB89006E44E9 /* TripInfo.swift */,
 				20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */,
 				20BA9A4A2D3D9DF1006E44E9 /* User.swift */,
 				200FF9402D3C756B00E5A017 /* ImageFetcher.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		20738A512D4048C800E6B0A8 /* RequestRide */ = {
+			isa = PBXGroup;
+			children = (
+				20738A522D4048CF00E6B0A8 /* RequestRideForm.swift */,
+				20738A542D404D1A00E6B0A8 /* TextFieldViewModel.swift */,
+				20738A4F2D40290E00E6B0A8 /* DateTextField.swift */,
+				20738A4D2D40125700E6B0A8 /* FilterTextField.swift */,
+			);
+			path = RequestRide;
+			sourceTree = "<group>";
+		};
+		20738A5A2D40524200E6B0A8 /* RadioButtons */ = {
+			isa = PBXGroup;
+			children = (
+				20738A5B2D4052B500E6B0A8 /* SwappedRadioButton.swift */,
+				20738A582D4051E100E6B0A8 /* FancyRadioButton.swift */,
+			);
+			path = RadioButtons;
 			sourceTree = "<group>";
 		};
 		20BA9A522D3DB670006E44E9 /* CardViews */ = {
@@ -324,9 +355,12 @@
 				200FF92F2D3AED9600E5A017 /* OnboardingProfile.swift in Sources */,
 				200FF9412D3C757200E5A017 /* ImageFetcher.swift in Sources */,
 				200FF9512D3CE5EF00E5A017 /* CalendarBar.swift in Sources */,
+				20738A552D404D3000E6B0A8 /* TextFieldViewModel.swift in Sources */,
 				20BA9A572D3DB862006E44E9 /* ViewGuests.swift in Sources */,
 				20076E0B2C8777A900D79D60 /* AppDelegate.swift in Sources */,
+				20738A592D4051EA00E6B0A8 /* FancyRadioButton.swift in Sources */,
 				200FF9362D3C456800E5A017 /* NavigationBar.swift in Sources */,
+				20738A572D404FEA00E6B0A8 /* CustomTextFieldStyle.swift in Sources */,
 				200FF9382D3C5D1B00E5A017 /* Explore.swift in Sources */,
 				20BA9A5B2D3DBCE1006E44E9 /* ProfilePageView.swift in Sources */,
 				20076E252C93DCB600D79D60 /* WelcomeController2.swift in Sources */,
@@ -347,6 +381,8 @@
 				20076E0D2C8777A900D79D60 /* SceneDelegate.swift in Sources */,
 				20738A502D40291400E6B0A8 /* DateTextField.swift in Sources */,
 				20738A4E2D40127A00E6B0A8 /* FilterTextField.swift in Sources */,
+				20738A5C2D4052D800E6B0A8 /* SwappedRadioButton.swift in Sources */,
+				20738A532D4048D500E6B0A8 /* RequestRideForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

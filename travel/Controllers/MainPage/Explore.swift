@@ -167,6 +167,9 @@ struct ExploreRides: View {
         .navigationDestination(isPresented: $NavProfile) {
             ProfilePageView()  // Destination for Profile
         }
+        .navigationDestination(isPresented: $RequestRide) {
+            RequestRideForm()  // Destination for Home
+        }
     }
 }
 

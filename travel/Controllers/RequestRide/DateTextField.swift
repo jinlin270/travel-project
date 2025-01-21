@@ -8,24 +8,22 @@
 import SwiftUI
 
 struct DateTextField: View {
-    @State private var dateString: String = ""
-    @State private var date: Date = Date()
+    @ObservedObject var viewModel: FilterViewModel
 
     var body: some View {
         VStack {
-            TextField("MM/DD/YYYY", text: $dateString)
+            TextField("MM/DD/YYYY", text: $viewModel.dateString)
                 .textFieldStyle(CustomTextFieldStyle())
-                .onChange(of: dateString) { newValue in
+                .onChange(of: viewModel.dateString) { newValue in
                     let formattedDate = formatDate(newValue)
                     if let date = formattedDate {
-                        self.date = date
-                        self.dateString = formatDateToString(date)
+                        viewModel.date = date
+                        viewModel.dateString = formatDateToString(date)
                     }
                     
-                    print("\(date)")
                 }
         }
-        .padding()
+       
     }
 
     private func formatDate(_ input: String) -> Date? {
@@ -40,18 +38,10 @@ struct DateTextField: View {
         return dateFormatter.string(from: date)
     }
 }
-//
-//struct CustomTextFieldStyle: TextFieldStyle {
-//    func body(content: Content) -> some View {
-//        content
-//            .padding()
-//            .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 2))
-//            .padding()
-//    }
-//}
+
 
 struct DateTextField_Previews: PreviewProvider {
     static var previews: some View {
-        DateTextField()
+        DateTextField(viewModel: FilterViewModel())
     }
 }

@@ -74,16 +74,7 @@ struct BottomNavigationBar: View {
         }.background(Color(.systemBackground))
             .navigationBarHidden(true) //for hiding back button in uikit
             .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
-//            .navigationDestination(isPresented: $NavHome) {
-//                OnboardingProfile()
-//                        }
-//            .navigationDestination(isPresented: $NavCommunity) {
-//                OnboardingController2()
-//                        }
-//            .navigationDestination(isPresented: $NavProfile) {
-//                OnboardingController2()
-//                        }
-        
+
     }
 }
 
