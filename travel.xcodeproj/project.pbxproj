@@ -34,6 +34,8 @@
 		200FF9512D3CE5EF00E5A017 /* CalendarBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9502D3CE5E800E5A017 /* CalendarBar.swift */; };
 		200FF9532D3CE60C00E5A017 /* RideRequestBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9522D3CE60900E5A017 /* RideRequestBar.swift */; };
 		200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9542D3CF2FB00E5A017 /* ToggleView.swift */; };
+		20738A4E2D40127A00E6B0A8 /* FilterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A4D2D40125700E6B0A8 /* FilterTextField.swift */; };
+		20738A502D40291400E6B0A8 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A4F2D40290E00E6B0A8 /* DateTextField.swift */; };
 		20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4A2D3D9DF1006E44E9 /* User.swift */; };
 		20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */; };
 		20BA9A4F2D3DA7F2006E44E9 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */; };
@@ -74,6 +76,8 @@
 		200FF9502D3CE5E800E5A017 /* CalendarBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBar.swift; sourceTree = "<group>"; };
 		200FF9522D3CE60900E5A017 /* RideRequestBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestBar.swift; sourceTree = "<group>"; };
 		200FF9542D3CF2FB00E5A017 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		20738A4D2D40125700E6B0A8 /* FilterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTextField.swift; sourceTree = "<group>"; };
+		20738A4F2D40290E00E6B0A8 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 		20BA9A4A2D3D9DF1006E44E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideCardView.swift; sourceTree = "<group>"; };
 		20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 		20076E302CA0E23A00D79D60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20738A4F2D40290E00E6B0A8 /* DateTextField.swift */,
+				20738A4D2D40125700E6B0A8 /* FilterTextField.swift */,
 				20BA9A602D3ECB64006E44E9 /* Slider.swift */,
 				20BA9A562D3DB852006E44E9 /* ViewGuests.swift */,
 				200FF9352D3C456400E5A017 /* NavigationBar.swift */,
@@ -339,6 +345,8 @@
 				200FF94B2D3CA11600E5A017 /* SearchBar.swift in Sources */,
 				200FF92B2D3AE28400E5A017 /* OnboardingController3.swift in Sources */,
 				20076E0D2C8777A900D79D60 /* SceneDelegate.swift in Sources */,
+				20738A502D40291400E6B0A8 /* DateTextField.swift in Sources */,
+				20738A4E2D40127A00E6B0A8 /* FilterTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
