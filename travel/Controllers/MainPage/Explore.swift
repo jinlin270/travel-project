@@ -125,7 +125,7 @@ struct ExploreRides: View {
                     .frame(minHeight: 100)
                
                 
-                Spacer()
+//                Spacer().frame(height: 16)
                 
                 Button(action: {
                     RequestRide = true
@@ -146,10 +146,10 @@ struct ExploreRides: View {
                         RoundedRectangle(cornerRadius: 20)
                             .inset(by: 0.75)  // Border inset to create thickness
                             .stroke(Color.black, lineWidth: 1.5)  // Border stroke color and width
-                    )}.padding(.top, 450).padding(.bottom, 13)
+                    )}.padding(.top, 440).padding(.bottom, 16)
             }
             
-            
+          
 
             // Add the BottomNavigationBar
             BottomNavigationBar(
@@ -165,7 +165,7 @@ struct ExploreRides: View {
             OnboardingController2()  // Destination for Community
         }
         .navigationDestination(isPresented: $NavProfile) {
-            OnboardingController2()  // Destination for Profile
+            ProfilePageView()  // Destination for Profile
         }
     }
 }

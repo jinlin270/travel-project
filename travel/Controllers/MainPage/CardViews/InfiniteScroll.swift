@@ -74,6 +74,32 @@ class InfiniteScroll: ObservableObject {
                 gender_preference: "All females",
                 availableSeats: 2,
                 totalSeats: 4
+            ),
+            TripInfo(
+                id: 2,
+                driver: user1,
+                bookmarked: false,
+                price: 15,
+                departureTime: Date(),
+                arrivalTime: Date(),
+                meetingLocation: "161 Ho Plaza, Ithaca, NY",
+                destination: "So Ho, New York, NY",
+                gender_preference: "All females",
+                availableSeats: 2,
+                totalSeats: 4
+            ),
+            TripInfo(
+                id: 3,
+                driver: user1,
+                bookmarked: false,
+                price: 15,
+                departureTime: Date(),
+                arrivalTime: Date(),
+                meetingLocation: "161 Ho Plaza, Ithaca, NY",
+                destination: "So Ho, New York, NY",
+                gender_preference: "All females",
+                availableSeats: 2,
+                totalSeats: 4
             )
         ]
         _isRideOffer = isRideOffer

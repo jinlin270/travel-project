@@ -62,7 +62,7 @@ struct BottomNavigationBar: View {
                         }.frame(maxWidth: .infinity)
                     }
                 }
-                .frame(height: 60)
+                .frame(height: 80)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 0)
                 .padding(.top, 12)
@@ -74,15 +74,15 @@ struct BottomNavigationBar: View {
         }.background(Color(.systemBackground))
             .navigationBarHidden(true) //for hiding back button in uikit
             .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
-            .navigationDestination(isPresented: $NavHome) {
-                OnboardingProfile()
-                        }
-            .navigationDestination(isPresented: $NavCommunity) {
-                OnboardingController2()
-                        }
-            .navigationDestination(isPresented: $NavProfile) {
-                OnboardingController2()
-                        }
+//            .navigationDestination(isPresented: $NavHome) {
+//                OnboardingProfile()
+//                        }
+//            .navigationDestination(isPresented: $NavCommunity) {
+//                OnboardingController2()
+//                        }
+//            .navigationDestination(isPresented: $NavProfile) {
+//                OnboardingController2()
+//                        }
         
     }
 }

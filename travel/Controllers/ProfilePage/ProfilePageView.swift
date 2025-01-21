@@ -60,6 +60,7 @@ struct ProfilePageView: View {
                                         .frame(width: 126, height: 126)
                                         .offset(y: -60) // Position the half-circl
                                         )
+                                .padding(.top, -8)
                             
                         } else {
                             Image("profile_icon")
@@ -76,6 +77,7 @@ struct ProfilePageView: View {
                                 .onAppear {
                                     imageFetcher.fetchImage(from: user.profilePicURL)
                                 }
+                                .padding(.top, -8)
                         }
                         
                         Spacer().frame(width: 30)
@@ -99,13 +101,13 @@ struct ProfilePageView: View {
                                     .scaledToFit()
                                     .frame(width: 24, height: 24)
                                 
-                                
                                 Text("\(user.phoneNumber)")
                                     .font(.system(size: 12))
                                     .foregroundColor(.black)
                                     .frame(alignment:.leading)
                                 //End HStack2.2.1
                             }.frame(maxWidth:.infinity, alignment:.leading)
+                                .padding(.top, 8)
                             
                             HStack{//HStack2.2.2
                                 Image("Chat")
@@ -124,14 +126,16 @@ struct ProfilePageView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 28, height: 28)
-                                    
+                                
                                 //End HStack2.2.1
                             }.frame(maxWidth:.infinity, alignment:.leading)
+                            
                             //End VStack 2.2
                         }
                         .frame(maxWidth: 200)
                         //End HStack 2.1
-                    }
+                        //End VStack (Profile and first group)
+                    }.padding(.top, -50)
                     
                     HStack{
                         RoundedButton(imageName: "panda1", buttonText: "\(user.rideOffers.count) ride offers")
@@ -142,6 +146,7 @@ struct ProfilePageView: View {
                             .frame(maxWidth:.infinity, alignment:.trailing)
                     }.padding(.leading, 16)
                         .padding(.trailing, 16)
+                        .padding(.top, 16)
                       
                     HStack{
                         Text("Traveling Preferences")
@@ -215,6 +220,7 @@ struct ProfilePageView: View {
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(.black, lineWidth: 2) )
                     .padding(16)
+                    
 
                     
                     
@@ -231,13 +237,12 @@ struct ProfilePageView: View {
                     OnboardingController2()  // Destination for Community
                 }
                 .navigationDestination(isPresented: $NavProfile) {
-                    OnboardingController2()  // Destination for Profile
+                    ProfilePageView()  // Destination for Profile
                 }
                  
                     //End VStack 2
                 }.frame( maxHeight: .infinity, alignment: .top)
                 
-
             }//Z1
           
     
