@@ -42,6 +42,10 @@
 		20738A592D4051EA00E6B0A8 /* FancyRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A582D4051E100E6B0A8 /* FancyRadioButton.swift */; };
 		20738A5C2D4052D800E6B0A8 /* SwappedRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A5B2D4052B500E6B0A8 /* SwappedRadioButton.swift */; };
 		20738A642D407F2F00E6B0A8 /* SearchRides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A632D407F2B00E6B0A8 /* SearchRides.swift */; };
+		20738A672D408A4900E6B0A8 /* DetailsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A662D408A4600E6B0A8 /* DetailsPage.swift */; };
+		20738A6B2D408A9100E6B0A8 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6A2D408A8F00E6B0A8 /* MapModel.swift */; };
+		20738A6D2D408AAF00E6B0A8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6C2D408AAD00E6B0A8 /* MapView.swift */; };
+		20738A6F2D408AE400E6B0A8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6E2D408AE000E6B0A8 /* LocationManager.swift */; };
 		20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4A2D3D9DF1006E44E9 /* User.swift */; };
 		20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */; };
 		20BA9A4F2D3DA7F2006E44E9 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */; };
@@ -90,6 +94,10 @@
 		20738A582D4051E100E6B0A8 /* FancyRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyRadioButton.swift; sourceTree = "<group>"; };
 		20738A5B2D4052B500E6B0A8 /* SwappedRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwappedRadioButton.swift; sourceTree = "<group>"; };
 		20738A632D407F2B00E6B0A8 /* SearchRides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRides.swift; sourceTree = "<group>"; };
+		20738A662D408A4600E6B0A8 /* DetailsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPage.swift; sourceTree = "<group>"; };
+		20738A6A2D408A8F00E6B0A8 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		20738A6C2D408AAD00E6B0A8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		20738A6E2D408AE000E6B0A8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		20BA9A4A2D3D9DF1006E44E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideCardView.swift; sourceTree = "<group>"; };
 		20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -157,6 +165,7 @@
 		20076E212C93DC9A00D79D60 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				20738A652D408A3100E6B0A8 /* ReserveRide */,
 				20738A622D407F2300E6B0A8 /* SearchRides */,
 				20738A512D4048C800E6B0A8 /* RequestRide */,
 				20BA9A592D3DBCCF006E44E9 /* ProfilePage */,
@@ -218,11 +227,13 @@
 		200FF93F2D3C755F00E5A017 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20738A6A2D408A8F00E6B0A8 /* MapModel.swift */,
 				20738A562D404FE000E6B0A8 /* CustomTextFieldStyle.swift */,
 				20BA9A5E2D3EBB89006E44E9 /* TripInfo.swift */,
 				20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */,
 				20BA9A4A2D3D9DF1006E44E9 /* User.swift */,
 				200FF9402D3C756B00E5A017 /* ImageFetcher.swift */,
+				20738A542D404D1A00E6B0A8 /* TextFieldViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				20738A522D4048CF00E6B0A8 /* RequestRideForm.swift */,
-				20738A542D404D1A00E6B0A8 /* TextFieldViewModel.swift */,
 				20738A4F2D40290E00E6B0A8 /* DateTextField.swift */,
 				20738A4D2D40125700E6B0A8 /* FilterTextField.swift */,
 			);
@@ -253,6 +263,16 @@
 				20738A632D407F2B00E6B0A8 /* SearchRides.swift */,
 			);
 			path = SearchRides;
+			sourceTree = "<group>";
+		};
+		20738A652D408A3100E6B0A8 /* ReserveRide */ = {
+			isa = PBXGroup;
+			children = (
+				20738A6E2D408AE000E6B0A8 /* LocationManager.swift */,
+				20738A6C2D408AAD00E6B0A8 /* MapView.swift */,
+				20738A662D408A4600E6B0A8 /* DetailsPage.swift */,
+			);
+			path = ReserveRide;
 			sourceTree = "<group>";
 		};
 		20BA9A522D3DB670006E44E9 /* CardViews */ = {
@@ -359,7 +379,9 @@
 				20076E272C93DCD700D79D60 /* WelcomeController1.swift in Sources */,
 				200FF9532D3CE60C00E5A017 /* RideRequestBar.swift in Sources */,
 				200FF9472D3C97CD00E5A017 /* InfiniteScroll.swift in Sources */,
+				20738A6F2D408AE400E6B0A8 /* LocationManager.swift in Sources */,
 				200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */,
+				20738A6B2D408A9100E6B0A8 /* MapModel.swift in Sources */,
 				20BA9A612D3ECB66006E44E9 /* Slider.swift in Sources */,
 				200FF9292D21C7CE00E5A017 /* NavigationButtons.swift in Sources */,
 				20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */,
@@ -371,6 +393,7 @@
 				20076E0B2C8777A900D79D60 /* AppDelegate.swift in Sources */,
 				20738A592D4051EA00E6B0A8 /* FancyRadioButton.swift in Sources */,
 				200FF9362D3C456800E5A017 /* NavigationBar.swift in Sources */,
+				20738A672D408A4900E6B0A8 /* DetailsPage.swift in Sources */,
 				20738A572D404FEA00E6B0A8 /* CustomTextFieldStyle.swift in Sources */,
 				200FF9382D3C5D1B00E5A017 /* Explore.swift in Sources */,
 				20738A642D407F2F00E6B0A8 /* SearchRides.swift in Sources */,
@@ -378,6 +401,7 @@
 				20076E252C93DCB600D79D60 /* WelcomeController2.swift in Sources */,
 				20076E5D2CB35DD300D79D60 /* OnboardingController2.swift in Sources */,
 				200FF9452D3C95D700E5A017 /* RideCardView.swift in Sources */,
+				20738A6D2D408AAF00E6B0A8 /* MapView.swift in Sources */,
 				200FF9492D3C97E400E5A017 /* ScrollCardsView.swift in Sources */,
 				20076E372CAA4FCD00D79D60 /* WelcomeController4.swift in Sources */,
 				200FF94D2D3CD2A900E5A017 /* Calendar.swift in Sources */,
