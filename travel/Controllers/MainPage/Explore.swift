@@ -16,6 +16,8 @@ struct ExploreRides: View {
     @State private var showCalendar = false
     @State var selectedDate = Date()
     @State private var rideCount: Int = 0
+    @State private var showSearchWindow = false
+    @State private var searchRide: Bool = false
     
     var currentDate: Date {
         Date()
@@ -38,6 +40,15 @@ struct ExploreRides: View {
                             
 
     var body: some View {
+        ZStack{
+            
+            if searchRide {
+                SearchRidesView(isPresented: $searchRide)
+                    .zIndex(1)
+                Color.black.opacity(0.5) // Dimmed background
+                .edgesIgnoringSafeArea(.all)
+            }
+            
         VStack {
             // Your main content here, for example:
             HStack{
@@ -97,13 +108,16 @@ struct ExploreRides: View {
                     .padding(.trailing, 16)
                     .padding(.leading, -16)
                 
-                Image("filter")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:24, height:24)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .padding(.trailing, 16)
-                
+                Button(action: {
+                    searchRide = true
+                }){
+                    Image("filter")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:24, height:24)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.trailing, 16)
+                }
                    
             }
             .onChange(of: selectedDate) { newDate in
@@ -119,7 +133,6 @@ struct ExploreRides: View {
                     }
             
             ZStack{
-                
           
                 ScrollCardsView(isRideOffer: $isRideOffer)
                     .frame(minHeight: 100)
@@ -148,28 +161,31 @@ struct ExploreRides: View {
                             .stroke(Color.black, lineWidth: 1.5)  // Border stroke color and width
                     )}.padding(.top, 440).padding(.bottom, 16)
             }
-            
           
 
             // Add the BottomNavigationBar
-            BottomNavigationBar(
-                NavHome: $NavHome,
-                NavCommunity: $NavCommunity,
-                NavProfile: $NavProfile
-            )
-        }
-        .navigationDestination(isPresented: $NavHome) {
-            ExploreRides()  // Destination for Home
-        }
-        .navigationDestination(isPresented: $NavCommunity) {
-            OnboardingController2()  // Destination for Community
-        }
-        .navigationDestination(isPresented: $NavProfile) {
-            ProfilePageView()  // Destination for Profile
-        }
-        .navigationDestination(isPresented: $RequestRide) {
-            RequestRideForm()  // Destination for Home
-        }
+                BottomNavigationBar(
+                    NavHome: $NavHome,
+                    NavCommunity: $NavCommunity,
+                    NavProfile: $NavProfile
+                )
+            }
+            .navigationDestination(isPresented: $NavHome) {
+                ExploreRides()  // Destination for Home
+            }
+            .navigationDestination(isPresented: $NavCommunity) {
+                OnboardingController2()  // Destination for Community
+            }
+            .navigationDestination(isPresented: $NavProfile) {
+                ProfilePageView()  // Destination for Profile
+            }
+            .navigationDestination(isPresented: $RequestRide) {
+                RequestRideForm()  // Destination for Home
+            }
+            
+        } //Pop up ZStack
+
+            
     }
 }
 
