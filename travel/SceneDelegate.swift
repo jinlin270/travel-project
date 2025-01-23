@@ -12,7 +12,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        // 1. Capture the scene
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        
+//        // 2. Create a new UIWindow and pass in a UIWindowScene
+//        let window = UIWindow(windowScene: windowScene)
+//        
+//        // 3. Create a view hierarchy programmatically
+//        // HERE IS THE INITIAL VIEW
+////        let initialSwiftUIView = WelcomeController1()
+////        let navController = UINavigationController(rootViewController: initialSwiftUIView)
+//        
+//        let initialSwiftUIView = OnboardingProfile()
+//        let hostingController = UIHostingController(rootView: initialSwiftUIView)
+//        let navController = UINavigationController(rootViewController: hostingController)
+//        
+//        navController.navigationBar.isHidden = true
+//        
+//        // 4. Set the navigation controller as the window's root view controller
+//        window.rootViewController = navController
+//        
+//        // 5. Set the window and call makeKeyAndVisible()
+//        self.window = window
+//        window.makeKeyAndVisible()
+//    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // 1. Capture the scene
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -20,24 +45,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 2. Create a new UIWindow and pass in a UIWindowScene
         let window = UIWindow(windowScene: windowScene)
         
-        // 3. Create a view hierarchy programmatically
-        // HERE IS THE INITIAL VIEW
-        let initialSwiftUIView = WelcomeController1()
-        let navController = UINavigationController(rootViewController: initialSwiftUIView)
+        // 3. Create a SwiftUI view that includes NavigationStack
+        let initialSwiftUIView = OnboardingProfile() // Your initial SwiftUI view
         
-//        let initialSwiftUIView = OnboardingProfile()
-//        let hostingController = UIHostingController(rootView: initialSwiftUIView)
-//        let navController = UINavigationController(rootViewController: hostingController)
+        // Use a UIHostingController with the SwiftUI view
+        let hostingController = UIHostingController(rootView: initialSwiftUIView)
         
-        navController.navigationBar.isHidden = true
-        
-        // 4. Set the navigation controller as the window's root view controller
-        window.rootViewController = navController
+        // 4. Set the rootViewController directly to the hostingController
+        window.rootViewController = hostingController
         
         // 5. Set the window and call makeKeyAndVisible()
         self.window = window
         window.makeKeyAndVisible()
     }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

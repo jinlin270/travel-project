@@ -10,8 +10,9 @@ import SwiftUI
 struct OnboardingProfile: View {
     @State private var NextPage = false
     @State private var PrevPage = false
+
     var body: some View {
-        NavigationView {
+        NavigationStack { // Use NavigationStack for iOS 16 and later
             VStack {
                 Image("progressBar6")
                     .resizable()
@@ -27,26 +28,28 @@ struct OnboardingProfile: View {
                     .foregroundColor(.black)
                 
                 Spacer().frame(height: 16)
-                UploadPictureView(UploadPic:{}) // TODO
+                UploadPictureView(UploadPic:{}) // TODO: Add your upload picture logic
                 Spacer()
                 
-                NavigationButtons(   onBack: {
-                    PrevPage = true
-                },
-                onNext: {
-                    NextPage = true
-                })
+                NavigationButtons(
+                    onBack: {
+                        PrevPage = true
+                    },
+                    onNext: {
+                        NextPage = true
+                    })
                 
-            }.background(Color(.systemBackground))
-                .navigationBarHidden(true) //for hiding back button in uikit
-                .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
-                .navigationDestination(isPresented: $NextPage) {
-                    ExploreRides()
-                            }
-                .navigationDestination(isPresented: $PrevPage) {
-                    OnboardingController2()
-                            }
+            }
+            .background(Color(.systemBackground))
+            .navigationDestination(isPresented: $NextPage) {
+                ExploreRides() // Destination view for NextPage
+            }
+            .navigationDestination(isPresented: $PrevPage) {
+                OnboardingController2() // Destination view for PrevPage
+            }
         }
+        .navigationBarBackButtonHidden(true) // Hide the back button if needed
+        .navigationBarHidden(false) // Ensure the navigation bar is visible for navigation actions
     }
 }
 
