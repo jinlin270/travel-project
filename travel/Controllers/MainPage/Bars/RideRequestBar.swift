@@ -135,7 +135,7 @@ struct RideRequestBar: View {
                 if InCity {
                     HStack {
                         Divider()
-                            .frame(width: 74, height: 5)
+                            .frame(width: 74, height: 3)
                             .background(Color.black)
                             .padding(.top, -8)
                     }
@@ -143,7 +143,7 @@ struct RideRequestBar: View {
                 } else if OutCity {
                     HStack {
                         Divider()
-                            .frame(width: 74, height: 5)
+                            .frame(width: 74, height: 3)
                             .background(Color.black)
                             .padding(.top, -8)
                     }
@@ -151,7 +151,7 @@ struct RideRequestBar: View {
                 } else if InState {
                     HStack {
                         Divider()
-                            .frame(width: 74, height: 5)
+                            .frame(width: 74, height: 3)
                             .background(Color.black)
                             .padding(.top, -8)
                     }
@@ -159,7 +159,7 @@ struct RideRequestBar: View {
                 } else if OutState {
                     HStack {
                         Divider()
-                            .frame(width: 74, height: 5)
+                            .frame(width: 74, height: 3)
                             .background(Color.black)
                             .padding(.top, -8)
                     }

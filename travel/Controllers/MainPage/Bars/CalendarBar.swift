@@ -96,7 +96,7 @@ struct CalendarBar: View {
             
             if isSameDay(date1: date, date2: selectedDate) {
                 Divider()
-                    .frame(width: 52, height: 5)
+                    .frame(width: 52, height: 3)
                     .background(Color.black)
             }else{
                 

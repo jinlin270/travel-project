@@ -29,7 +29,6 @@
 		200FF9452D3C95D700E5A017 /* RideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9442D3C95CD00E5A017 /* RideCardView.swift */; };
 		200FF9472D3C97CD00E5A017 /* InfiniteScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9462D3C97C900E5A017 /* InfiniteScroll.swift */; };
 		200FF9492D3C97E400E5A017 /* ScrollCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9482D3C97DF00E5A017 /* ScrollCardsView.swift */; };
-		200FF94B2D3CA11600E5A017 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF94A2D3CA10600E5A017 /* SearchBar.swift */; };
 		200FF94D2D3CD2A900E5A017 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF94C2D3CD2A500E5A017 /* Calendar.swift */; };
 		200FF9512D3CE5EF00E5A017 /* CalendarBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9502D3CE5E800E5A017 /* CalendarBar.swift */; };
 		200FF9532D3CE60C00E5A017 /* RideRequestBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FF9522D3CE60900E5A017 /* RideRequestBar.swift */; };
@@ -46,6 +45,17 @@
 		20738A6B2D408A9100E6B0A8 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6A2D408A8F00E6B0A8 /* MapModel.swift */; };
 		20738A6D2D408AAF00E6B0A8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6C2D408AAD00E6B0A8 /* MapView.swift */; };
 		20738A6F2D408AE400E6B0A8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6E2D408AE000E6B0A8 /* LocationManager.swift */; };
+		20738A742D41562A00E6B0A8 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A732D41561E00E6B0A8 /* GroupView.swift */; };
+		20738A762D41563100E6B0A8 /* MyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A752D41562D00E6B0A8 /* MyGroupView.swift */; };
+		20738A782D41569D00E6B0A8 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A772D41569600E6B0A8 /* GroupModel.swift */; };
+		20738A7A2D4166B600E6B0A8 /* CommunityGroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A792D4166B000E6B0A8 /* CommunityGroupCardView.swift */; };
+		20738A7D2D41BA7F00E6B0A8 /* CommunityBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A7C2D41BA6E00E6B0A8 /* CommunityBar.swift */; };
+		20738A7F2D41BEDC00E6B0A8 /* DropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A7E2D41BED800E6B0A8 /* DropDownMenu.swift */; };
+		20738A822D41C44800E6B0A8 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A812D41C44500E6B0A8 /* MessageModel.swift */; };
+		20738A842D41C47A00E6B0A8 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A832D41C47100E6B0A8 /* ChatViewModel.swift */; };
+		20738A862D41C48900E6B0A8 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A852D41C48000E6B0A8 /* ChatView.swift */; };
+		20738A882D41C8BB00E6B0A8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A872D41C8B800E6B0A8 /* SearchBar.swift */; };
+		20738A8A2D41C95300E6B0A8 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A892D41C94D00E6B0A8 /* SearchButton.swift */; };
 		20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4A2D3D9DF1006E44E9 /* User.swift */; };
 		20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */; };
 		20BA9A4F2D3DA7F2006E44E9 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */; };
@@ -81,7 +91,6 @@
 		200FF9442D3C95CD00E5A017 /* RideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideCardView.swift; sourceTree = "<group>"; };
 		200FF9462D3C97C900E5A017 /* InfiniteScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScroll.swift; sourceTree = "<group>"; };
 		200FF9482D3C97DF00E5A017 /* ScrollCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollCardsView.swift; sourceTree = "<group>"; };
-		200FF94A2D3CA10600E5A017 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		200FF94C2D3CD2A500E5A017 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		200FF9502D3CE5E800E5A017 /* CalendarBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBar.swift; sourceTree = "<group>"; };
 		200FF9522D3CE60900E5A017 /* RideRequestBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestBar.swift; sourceTree = "<group>"; };
@@ -98,6 +107,17 @@
 		20738A6A2D408A8F00E6B0A8 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		20738A6C2D408AAD00E6B0A8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		20738A6E2D408AE000E6B0A8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		20738A732D41561E00E6B0A8 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		20738A752D41562D00E6B0A8 /* MyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupView.swift; sourceTree = "<group>"; };
+		20738A772D41569600E6B0A8 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		20738A792D4166B000E6B0A8 /* CommunityGroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupCardView.swift; sourceTree = "<group>"; };
+		20738A7C2D41BA6E00E6B0A8 /* CommunityBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityBar.swift; sourceTree = "<group>"; };
+		20738A7E2D41BED800E6B0A8 /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
+		20738A812D41C44500E6B0A8 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		20738A832D41C47100E6B0A8 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		20738A852D41C48000E6B0A8 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		20738A872D41C8B800E6B0A8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		20738A892D41C94D00E6B0A8 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		20BA9A4A2D3D9DF1006E44E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideCardView.swift; sourceTree = "<group>"; };
 		20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -165,6 +185,9 @@
 		20076E212C93DC9A00D79D60 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				20738A802D41C42900E6B0A8 /* Messenger */,
+				20738A7B2D416D1000E6B0A8 /* Scroll */,
+				20738A702D4155F300E6B0A8 /* CommunityGroups */,
 				20738A652D408A3100E6B0A8 /* ReserveRide */,
 				20738A622D407F2300E6B0A8 /* SearchRides */,
 				20738A512D4048C800E6B0A8 /* RequestRide */,
@@ -214,12 +237,12 @@
 		200FF9342D3C44F400E5A017 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				20738A892D41C94D00E6B0A8 /* SearchButton.swift */,
 				20BA9A532D3DB6B0006E44E9 /* Bars */,
 				20BA9A522D3DB670006E44E9 /* CardViews */,
 				200FF9372D3C5D1700E5A017 /* Explore.swift */,
 				200FF94C2D3CD2A500E5A017 /* Calendar.swift */,
 				200FF9542D3CF2FB00E5A017 /* ToggleView.swift */,
-				200FF94A2D3CA10600E5A017 /* SearchBar.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -227,6 +250,8 @@
 		200FF93F2D3C755F00E5A017 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20738A812D41C44500E6B0A8 /* MessageModel.swift */,
+				20738A772D41569600E6B0A8 /* GroupModel.swift */,
 				20738A6A2D408A8F00E6B0A8 /* MapModel.swift */,
 				20738A562D404FE000E6B0A8 /* CustomTextFieldStyle.swift */,
 				20BA9A5E2D3EBB89006E44E9 /* TripInfo.swift */,
@@ -275,11 +300,40 @@
 			path = ReserveRide;
 			sourceTree = "<group>";
 		};
+		20738A702D4155F300E6B0A8 /* CommunityGroups */ = {
+			isa = PBXGroup;
+			children = (
+				20738A872D41C8B800E6B0A8 /* SearchBar.swift */,
+				20738A7E2D41BED800E6B0A8 /* DropDownMenu.swift */,
+				20738A7C2D41BA6E00E6B0A8 /* CommunityBar.swift */,
+				20738A792D4166B000E6B0A8 /* CommunityGroupCardView.swift */,
+				20738A752D41562D00E6B0A8 /* MyGroupView.swift */,
+				20738A732D41561E00E6B0A8 /* GroupView.swift */,
+			);
+			path = CommunityGroups;
+			sourceTree = "<group>";
+		};
+		20738A7B2D416D1000E6B0A8 /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+				200FF9482D3C97DF00E5A017 /* ScrollCardsView.swift */,
+				200FF9462D3C97C900E5A017 /* InfiniteScroll.swift */,
+			);
+			path = Scroll;
+			sourceTree = "<group>";
+		};
+		20738A802D41C42900E6B0A8 /* Messenger */ = {
+			isa = PBXGroup;
+			children = (
+				20738A852D41C48000E6B0A8 /* ChatView.swift */,
+				20738A832D41C47100E6B0A8 /* ChatViewModel.swift */,
+			);
+			path = Messenger;
+			sourceTree = "<group>";
+		};
 		20BA9A522D3DB670006E44E9 /* CardViews */ = {
 			isa = PBXGroup;
 			children = (
-				200FF9462D3C97C900E5A017 /* InfiniteScroll.swift */,
-				200FF9482D3C97DF00E5A017 /* ScrollCardsView.swift */,
 				200FF9442D3C95CD00E5A017 /* RideCardView.swift */,
 				20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */,
 			);
@@ -379,12 +433,15 @@
 				20076E272C93DCD700D79D60 /* WelcomeController1.swift in Sources */,
 				200FF9532D3CE60C00E5A017 /* RideRequestBar.swift in Sources */,
 				200FF9472D3C97CD00E5A017 /* InfiniteScroll.swift in Sources */,
+				20738A7A2D4166B600E6B0A8 /* CommunityGroupCardView.swift in Sources */,
 				20738A6F2D408AE400E6B0A8 /* LocationManager.swift in Sources */,
 				200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */,
 				20738A6B2D408A9100E6B0A8 /* MapModel.swift in Sources */,
+				20738A7D2D41BA7F00E6B0A8 /* CommunityBar.swift in Sources */,
 				20BA9A612D3ECB66006E44E9 /* Slider.swift in Sources */,
 				200FF9292D21C7CE00E5A017 /* NavigationButtons.swift in Sources */,
 				20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */,
+				20738A782D41569D00E6B0A8 /* GroupModel.swift in Sources */,
 				200FF92F2D3AED9600E5A017 /* OnboardingProfile.swift in Sources */,
 				200FF9412D3C757200E5A017 /* ImageFetcher.swift in Sources */,
 				200FF9512D3CE5EF00E5A017 /* CalendarBar.swift in Sources */,
@@ -399,25 +456,32 @@
 				20738A642D407F2F00E6B0A8 /* SearchRides.swift in Sources */,
 				20BA9A5B2D3DBCE1006E44E9 /* ProfilePageView.swift in Sources */,
 				20076E252C93DCB600D79D60 /* WelcomeController2.swift in Sources */,
+				20738A762D41563100E6B0A8 /* MyGroupView.swift in Sources */,
 				20076E5D2CB35DD300D79D60 /* OnboardingController2.swift in Sources */,
 				200FF9452D3C95D700E5A017 /* RideCardView.swift in Sources */,
 				20738A6D2D408AAF00E6B0A8 /* MapView.swift in Sources */,
 				200FF9492D3C97E400E5A017 /* ScrollCardsView.swift in Sources */,
 				20076E372CAA4FCD00D79D60 /* WelcomeController4.swift in Sources */,
+				20738A862D41C48900E6B0A8 /* ChatView.swift in Sources */,
 				200FF94D2D3CD2A900E5A017 /* Calendar.swift in Sources */,
 				200FF9312D3AF2C400E5A017 /* UploadPicture.swift in Sources */,
+				20738A8A2D41C95300E6B0A8 /* SearchButton.swift in Sources */,
 				20BA9A5D2D3EB932006E44E9 /* Buttons.swift in Sources */,
 				20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */,
 				20076E352CAA2BE000D79D60 /* WelcomeController3.swift in Sources */,
 				20BA9A5F2D3EBB90006E44E9 /* TripInfo.swift in Sources */,
 				20076E3A2CAB83AF00D79D60 /* OnboardingController1.swift in Sources */,
+				20738A882D41C8BB00E6B0A8 /* SearchBar.swift in Sources */,
+				20738A7F2D41BEDC00E6B0A8 /* DropDownMenu.swift in Sources */,
+				20738A842D41C47A00E6B0A8 /* ChatViewModel.swift in Sources */,
 				20BA9A4F2D3DA7F2006E44E9 /* DateFormatter.swift in Sources */,
-				200FF94B2D3CA11600E5A017 /* SearchBar.swift in Sources */,
 				200FF92B2D3AE28400E5A017 /* OnboardingController3.swift in Sources */,
 				20076E0D2C8777A900D79D60 /* SceneDelegate.swift in Sources */,
 				20738A502D40291400E6B0A8 /* DateTextField.swift in Sources */,
+				20738A822D41C44800E6B0A8 /* MessageModel.swift in Sources */,
 				20738A4E2D40127A00E6B0A8 /* FilterTextField.swift in Sources */,
 				20738A5C2D4052D800E6B0A8 /* SwappedRadioButton.swift in Sources */,
+				20738A742D41562A00E6B0A8 /* GroupView.swift in Sources */,
 				20738A532D4048D500E6B0A8 /* RequestRideForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

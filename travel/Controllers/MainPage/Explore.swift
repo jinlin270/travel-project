@@ -13,6 +13,7 @@ struct ExploreRides: View {
     @State private var RequestRide = false
     @State private var OfferRide = false
     @State var isRideOffer = true
+    @State private var isRideInfo = true
     @State private var showCalendar = false
     @State var selectedDate = Date()
     @State private var rideCount: Int = 0
@@ -91,7 +92,7 @@ struct ExploreRides: View {
                 .padding(.top, -10)
             
             HStack{
-                SearchBarView(defaultText: "Search for requests").frame(maxWidth: .infinity, alignment: .leading)
+                SearchButtonView(defaultText: "Search for requests").frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 16)
                     .padding(.trailing, 16)
 
@@ -134,7 +135,7 @@ struct ExploreRides: View {
             
             ZStack{
           
-                ScrollCardsView(isRideOffer: $isRideOffer)
+                ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $isRideInfo)
                     .frame(minHeight: 100)
                
                 

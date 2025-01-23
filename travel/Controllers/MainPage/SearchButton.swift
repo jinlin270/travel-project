@@ -1,6 +1,13 @@
+//
+//  SearchButton.swift
+//  travel
+//
+//  Created by Lin Jin on 1/22/25.
+//
+
 import SwiftUI
 
-struct SearchBarView: View {
+struct SearchButtonView: View {
     @State private var searchText: String = ""
     let defaultText: String
 
@@ -35,7 +42,7 @@ struct SearchBarView: View {
 
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarView(defaultText: "Search Stuff")
+        SearchButtonView(defaultText: "Search Stuff")
             .padding()
     }
 }
