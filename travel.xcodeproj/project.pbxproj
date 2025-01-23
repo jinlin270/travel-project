@@ -56,6 +56,9 @@
 		20738A862D41C48900E6B0A8 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A852D41C48000E6B0A8 /* ChatView.swift */; };
 		20738A882D41C8BB00E6B0A8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A872D41C8B800E6B0A8 /* SearchBar.swift */; };
 		20738A8A2D41C95300E6B0A8 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A892D41C94D00E6B0A8 /* SearchButton.swift */; };
+		20738A8E2D42AAF900E6B0A8 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A8D2D42AAF700E6B0A8 /* CheckoutView.swift */; };
+		20738A902D42AE5600E6B0A8 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A8F2D42AE4A00E6B0A8 /* Numbers.swift */; };
+		20738A922D42B1FE00E6B0A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A912D42B1FA00E6B0A8 /* Constants.swift */; };
 		20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4A2D3D9DF1006E44E9 /* User.swift */; };
 		20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */; };
 		20BA9A4F2D3DA7F2006E44E9 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */; };
@@ -118,6 +121,9 @@
 		20738A852D41C48000E6B0A8 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		20738A872D41C8B800E6B0A8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		20738A892D41C94D00E6B0A8 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
+		20738A8D2D42AAF700E6B0A8 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		20738A8F2D42AE4A00E6B0A8 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
+		20738A912D42B1FA00E6B0A8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		20BA9A4A2D3D9DF1006E44E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20BA9A4C2D3DA183006E44E9 /* RequestRideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideCardView.swift; sourceTree = "<group>"; };
 		20BA9A4E2D3DA7EE006E44E9 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 		200FF93F2D3C755F00E5A017 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20738A912D42B1FA00E6B0A8 /* Constants.swift */,
 				20738A812D41C44500E6B0A8 /* MessageModel.swift */,
 				20738A772D41569600E6B0A8 /* GroupModel.swift */,
 				20738A6A2D408A8F00E6B0A8 /* MapModel.swift */,
@@ -293,6 +300,7 @@
 		20738A652D408A3100E6B0A8 /* ReserveRide */ = {
 			isa = PBXGroup;
 			children = (
+				20738A8C2D42AAD700E6B0A8 /* Checkout */,
 				20738A6E2D408AE000E6B0A8 /* LocationManager.swift */,
 				20738A6C2D408AAD00E6B0A8 /* MapView.swift */,
 				20738A662D408A4600E6B0A8 /* DetailsPage.swift */,
@@ -329,6 +337,15 @@
 				20738A832D41C47100E6B0A8 /* ChatViewModel.swift */,
 			);
 			path = Messenger;
+			sourceTree = "<group>";
+		};
+		20738A8C2D42AAD700E6B0A8 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				20738A8F2D42AE4A00E6B0A8 /* Numbers.swift */,
+				20738A8D2D42AAF700E6B0A8 /* CheckoutView.swift */,
+			);
+			path = Checkout;
 			sourceTree = "<group>";
 		};
 		20BA9A522D3DB670006E44E9 /* CardViews */ = {
@@ -437,7 +454,9 @@
 				20738A6F2D408AE400E6B0A8 /* LocationManager.swift in Sources */,
 				200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */,
 				20738A6B2D408A9100E6B0A8 /* MapModel.swift in Sources */,
+				20738A902D42AE5600E6B0A8 /* Numbers.swift in Sources */,
 				20738A7D2D41BA7F00E6B0A8 /* CommunityBar.swift in Sources */,
+				20738A8E2D42AAF900E6B0A8 /* CheckoutView.swift in Sources */,
 				20BA9A612D3ECB66006E44E9 /* Slider.swift in Sources */,
 				200FF9292D21C7CE00E5A017 /* NavigationButtons.swift in Sources */,
 				20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */,
@@ -467,6 +486,7 @@
 				200FF9312D3AF2C400E5A017 /* UploadPicture.swift in Sources */,
 				20738A8A2D41C95300E6B0A8 /* SearchButton.swift in Sources */,
 				20BA9A5D2D3EB932006E44E9 /* Buttons.swift in Sources */,
+				20738A922D42B1FE00E6B0A8 /* Constants.swift in Sources */,
 				20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */,
 				20076E352CAA2BE000D79D60 /* WelcomeController3.swift in Sources */,
 				20BA9A5F2D3EBB90006E44E9 /* TripInfo.swift in Sources */,

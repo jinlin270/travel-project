@@ -41,7 +41,7 @@ struct BottomNavigationBar: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .foregroundColor(.white)
-                            Text("Search")
+                            Text("Community")
                                 .font(.system(size: 16, weight: .bold))
                                 .foregroundColor(.white)
                         }.frame(maxWidth: .infinity)
@@ -78,8 +78,4 @@ struct BottomNavigationBar: View {
     }
 }
 
-struct Constants {
-    static let blue: Color = Color(red: 0.07, green: 0.27, blue: 0.41)
-    static let main4: Color = Color(red: 0, green: 0.12, blue: 0.19)
-}
 

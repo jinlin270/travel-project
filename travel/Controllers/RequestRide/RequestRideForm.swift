@@ -11,6 +11,7 @@ struct RequestRideForm: View {
     @StateObject private var viewModel = FilterViewModel()
     @State private var NavHome = false
     @State private var saveTrip: Bool = false
+    @Binding var isRideOffer : Bool
 
     var body: some View {
 
@@ -31,7 +32,7 @@ struct RequestRideForm: View {
                                     .foregroundColor(.white)
                             }
                             Spacer()
-                            Text("Request A Ride")
+                            Text(isRideOffer ? "Request A Ride" : "Offer A Ride")
                                 .font(.system(size: 18, weight: .bold))
                                 .foregroundColor(.white)
                             
@@ -50,7 +51,7 @@ struct RequestRideForm: View {
                 
                 Spacer().frame(height: 30)
                 
-                FilterTextField(viewModel: viewModel)
+                FilterTextField(viewModel: viewModel, passengerText: isRideOffer ? "# Guests" : "# Seats")
                 
                 Spacer().frame(height: 30)
                 
@@ -152,6 +153,7 @@ struct RequestRideForm: View {
 
 struct RequestRideForm_Previews: PreviewProvider {
     static var previews: some View {
-        RequestRideForm()
+        @State var falsevar: Bool = false
+        RequestRideForm(isRideOffer: $falsevar)
     }
 }

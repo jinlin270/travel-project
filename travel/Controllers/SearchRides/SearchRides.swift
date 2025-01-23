@@ -42,7 +42,7 @@ struct SearchRidesView: View {
                 }
                 .padding()
                 
-                FilterTextField(viewModel: viewModel)
+                FilterTextField(viewModel: viewModel, passengerText: "# Passengers")
                 
                 HStack {
                     Button(action: {

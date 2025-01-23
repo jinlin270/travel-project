@@ -29,21 +29,11 @@ struct RideCardView: View {
                 HStack {
                     //HStack1 (profile)
                     if let image = imageFetcher.image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                        styledProfileImage(Image(uiImage: image))
                     } else {
-                        Image("profile_icon")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.white)
-                            .clipShape(Circle()) // Make the image circular
-                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                        styledProfileImage(Image("profile_icon"))
                             .onAppear {
-                                imageFetcher.fetchImage(from: ride_card.driver.profilePicURL)
+                                imageFetcher.fetchImage(from: user.profilePicURL)
                             }
                     }
                     
@@ -199,6 +189,14 @@ struct RideCardView: View {
             .padding(.trailing, 16)
             .padding(.bottom, 12)
         }//end of ZStack (boundary)
+    }
+    private func styledProfileImage(_ image: Image) -> some View {
+        image
+            .resizable()
+            .scaledToFit()
+            .frame(width: 40, height: 40)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.black, lineWidth: 2))
     }
 }
     

@@ -10,6 +10,7 @@ import UIKit
 
 struct FilterTextField: View {
     @ObservedObject var viewModel: FilterViewModel
+    var passengerText: String
 
     var body: some View {
        
@@ -23,7 +24,7 @@ struct FilterTextField: View {
                 
                 DateTextField(viewModel: viewModel) // Removed negative padding
                 
-                TextField("# Passengers", text: $viewModel.inputText, onEditingChanged: { isEditing in
+                TextField("\(passengerText)", text: $viewModel.inputText, onEditingChanged: { isEditing in
                     if !isEditing {
                         // When editing ends, validate and update numPassenger
                         if let num = Int(viewModel.inputText), num >= 0 {
@@ -58,6 +59,6 @@ struct FilterTextField: View {
 // Preview
 struct FilterTextField_Previews: PreviewProvider {
     static var previews: some View {
-        FilterTextField(viewModel: FilterViewModel())
+        FilterTextField(viewModel: FilterViewModel(), passengerText: "# Passengers")
     }
 }

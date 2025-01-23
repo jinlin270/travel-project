@@ -8,8 +8,6 @@
 import SwiftUI
 struct RequestRideCardView: View {
     var ride_card: TripInfo
-    @StateObject private var imageFetcher = ImageFetcher()
-    
     
     var body: some View {
         ZStack {

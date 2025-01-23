@@ -14,24 +14,9 @@ struct MyGroupCardView: View {
     var body: some View {
         HStack{
             if let image = imageFetcher.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .frame(width: 75, height: 48)
-                    .cornerRadius(12)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.black, lineWidth: 2)
-                    )
+                styledProfileImage(Image(uiImage: image))
             } else {
-                Image("panda1")
-                    .resizable()
-                    .frame(width: 75, height: 48)
-                    .cornerRadius(12)
-                    .foregroundColor(.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.black, lineWidth: 2)
-                    )
+                styledProfileImage(Image("panda1"))
                     .onAppear {
                         imageFetcher.fetchImage(from: group.profilePicture)
                     }
@@ -76,6 +61,16 @@ struct MyGroupCardView: View {
         
         }
     
+    }
+    private func styledProfileImage(_ image: Image) -> some View {
+        image
+            .resizable()
+            .frame(width: 75, height: 48)
+            .cornerRadius(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.black, lineWidth: 2)
+            )
     }
 }
     

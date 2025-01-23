@@ -17,7 +17,6 @@ struct ProfilePageView: View {
     
     var body: some View {
         let user = userManager.user
-        let warmYellow = Color(red: 1, green: 0.88, blue: 0.79)
       
             
             ZStack{//Z1
@@ -26,7 +25,7 @@ struct ProfilePageView: View {
                         Rectangle()
                             .foregroundColor(.clear)
                             .frame(width: .infinity, height: 157)
-                            .background(warmYellow)
+                            .background(Constants.warmYellow)
                         
                         Divider()
                             .frame(width: .infinity, height: 1.5)
@@ -48,36 +47,12 @@ struct ProfilePageView: View {
                 Spacer().frame(height:140)
                     HStack{//HStack2.1
                         if let image = imageFetcher.image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 119, height: 119)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(warmYellow, lineWidth: 10))
-                                .overlay(
-                                    HalfCircle()
-                                        .stroke(Color.black, lineWidth: 2) // Bottom half black outline
-                                        .frame(width: 126, height: 126)
-                                        .offset(y: -60) // Position the half-circl
-                                        )
-                                .padding(.top, -8)
-                            
+                            styledProfileImage(Image(uiImage: image))
                         } else {
-                            Image("profile_icon")
-                                .frame(width: 119, height: 119)
-                                .foregroundColor(.white)
-                                .clipShape(Circle()) // Make the image circular
-                                .overlay(Circle().stroke(warmYellow, lineWidth: 10))
-                                .overlay(
-                                    HalfCircle()
-                                        .stroke(Color.black, lineWidth: 2) // Bottom half black outline
-                                        .frame(width: 126, height: 126)
-                                        .offset(y: -60) // Position the half-circl
-                                        )
+                            styledProfileImage(Image("profile_icon"))
                                 .onAppear {
                                     imageFetcher.fetchImage(from: user.profilePicURL)
                                 }
-                                .padding(.top, -8)
                         }
                         
                         Spacer().frame(width: 30)
@@ -245,8 +220,24 @@ struct ProfilePageView: View {
                 
             }//Z1
           
-    
+        
     }
+    private func styledProfileImage(_ image: Image) -> some View {
+        image
+            .resizable()
+            .scaledToFit()
+            .frame(width: 119, height: 119)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Constants.warmYellow, lineWidth: 10))
+            .overlay(
+                HalfCircle()
+                    .stroke(Color.black, lineWidth: 2)
+                    .frame(width: 126, height: 126)
+                    .offset(y: -60)
+            )
+            .padding(.top, -8)
+    }
+
 }
 
 struct HalfCircle: Shape {

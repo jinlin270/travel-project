@@ -181,7 +181,7 @@ struct ExploreRides: View {
                 ProfilePageView()  // Destination for Profile
             }
             .navigationDestination(isPresented: $RequestRide) {
-                RequestRideForm()  // Destination for Home
+                RequestRideForm(isRideOffer: $isRideOffer)  // Destination for Home
             }
             
         } //Pop up ZStack
