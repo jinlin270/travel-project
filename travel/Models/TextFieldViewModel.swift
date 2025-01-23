@@ -12,7 +12,7 @@ class FilterViewModel: ObservableObject {
     @Published var destination: String = ""
     @Published var date: Date = Date()
     @Published var dateString: String = ""
-    @Published var inputText: String = ""
+    @Published var passengerText: String = ""
     @Published var numPassenger: Int = 0
 
     func resetTextFields() {
@@ -20,7 +20,7 @@ class FilterViewModel: ObservableObject {
         destination = ""
         dateString = ""
         date = Date()
-        inputText = ""
+        passengerText = ""
         numPassenger = 0
     }
 }

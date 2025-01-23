@@ -10,12 +10,14 @@ struct ScrollCardsView: View {
     @Binding var isRideInfo: Bool
     @Binding var isMyGroup: Bool
     @StateObject var viewModel: InfiniteScroll
+    var onTripSelected: (TripInfo) -> Void
 
-    init(isRideOffer: Binding<Bool>, isRideInfo: Binding<Bool>, isMyGroup: Binding<Bool>) {
+    init(isRideOffer: Binding<Bool>, isRideInfo: Binding<Bool>, isMyGroup: Binding<Bool>, onTripSelected: @escaping (TripInfo) -> Void = { _ in }) {
         _isRideOffer = isRideOffer
         _isRideInfo = isRideInfo
         _isMyGroup = isMyGroup
         _viewModel = StateObject(wrappedValue: InfiniteScroll(isRideOffer: isRideOffer, isRideInfo: isRideInfo))
+        self.onTripSelected = onTripSelected // Direct assignment
     }
 
     var body: some View {
@@ -59,7 +61,7 @@ struct ScrollCardsView: View {
         Group {
             if isRideOffer {
                 ForEach(viewModel.rideCards, id: \.id) { rideCard in
-                    RideCardView(ride_card: rideCard)
+                    RideCardView(ride_card: rideCard, onReserve: onTripSelected)
                         .padding()
                         .onAppear {
                             loadMoreDataIfNeeded(rideCard: rideCard)
@@ -134,19 +136,19 @@ struct ScrollCardsView: View {
     }
 }
 
+//
+//struct ScrollCardsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ScrollCardsViewPreview()
+//    }
+//}
 
-struct ScrollCardsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrollCardsViewPreview()
-    }
-}
-
-struct ScrollCardsViewPreview: View {
-    @State private var isRideOffer = true
-    @State private var isRideInfo = true
-    @State private var isMyGroup = true
-
-    var body: some View {
-        ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $isMyGroup)
-    }
-}
+//struct ScrollCardsViewPreview: View {
+//    @State private var isRideOffer = true
+//    @State private var isRideInfo = true
+//    @State private var isMyGroup = true
+//
+//    var body: some View {
+//        ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $isMyGroup)
+//    }
+//}

@@ -21,8 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         // 3. Create a view hierarchy programmatically
+        // HERE IS THE INITIAL VIEW
         let initialSwiftUIView = WelcomeController1()
         let navController = UINavigationController(rootViewController: initialSwiftUIView)
+        
+//        let initialSwiftUIView = OnboardingProfile()
+//        let hostingController = UIHostingController(rootView: initialSwiftUIView)
+//        let navController = UINavigationController(rootViewController: hostingController)
         
         navController.navigationBar.isHidden = true
         

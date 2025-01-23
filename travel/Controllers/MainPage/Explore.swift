@@ -19,6 +19,8 @@ struct ExploreRides: View {
     @State private var rideCount: Int = 0
     @State private var showSearchWindow = false
     @State private var searchRide: Bool = false
+    @State private var selectedTrip: TripInfo? = nil
+    @State private var isNavigatingToCheckout = false
     
     var currentDate: Date {
         Date()
@@ -135,7 +137,10 @@ struct ExploreRides: View {
             
             ZStack{
           
-                ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $isRideInfo)
+                ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $isRideInfo, onTripSelected: { trip in
+                    selectedTrip = trip
+                    isNavigatingToCheckout = true
+                })
                     .frame(minHeight: 100)
                
                 
@@ -152,7 +157,7 @@ struct ExploreRides: View {
                     }
                     .padding(16)
                     .frame(height: 40, alignment: .center)
-                    .background(Color(red: 1, green: 0.75, blue: 0.12))  // Background color
+                    .background(Constants.highlighterYellow)  // Background color
                     .cornerRadius(20)  // Rounded corners
                     .shadow(color: .black.opacity(0.3), radius: 4.5, x: 0, y: 0)  // Shadow effect
                     .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2)  // Additional shadow
@@ -182,6 +187,11 @@ struct ExploreRides: View {
             }
             .navigationDestination(isPresented: $RequestRide) {
                 RequestRideForm(isRideOffer: $isRideOffer)  // Destination for Home
+            }
+            .navigationDestination(isPresented: $isNavigatingToCheckout) {
+                if let trip = selectedTrip {
+                    CheckoutView(tripInfo: trip)
+                }
             }
             
         } //Pop up ZStack

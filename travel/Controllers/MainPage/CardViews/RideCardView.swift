@@ -8,6 +8,7 @@
 import SwiftUI
 struct RideCardView: View {
     var ride_card: TripInfo
+    var onReserve: (TripInfo) -> Void
     @StateObject private var imageFetcher = ImageFetcher()
     
     var body: some View {
@@ -167,18 +168,23 @@ struct RideCardView: View {
                 
                 Spacer().frame(height:20)
                 
+                
                 HStack { // Reserve Button
                     Spacer() // This will push the button to the right
-                    HStack(alignment: .center, spacing: 0) {
-                        Text("Reserve")
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity, alignment: .center) // Center the text
+                    Button(action: {
+                        onReserve(ride_card)
+                    }) {
+                        HStack(alignment: .center, spacing: 0) {
+                            Text("Reserve")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity, alignment: .center) // Center the text
+                        }
+                        .frame(maxWidth: 165, minHeight: 32, maxHeight: 32, alignment: .center)
+                        .background(Color(red: 0.07, green: 0.27, blue: 0.41)) // Apply background color
+                        .cornerRadius(8) // Rounded corners
+                        .padding(.trailing, 16) // Add 16 padding to the right
                     }
-                    .frame(maxWidth: 165, minHeight: 32, maxHeight: 32, alignment: .center)
-                    .background(Color(red: 0.07, green: 0.27, blue: 0.41)) // Apply background color
-                    .cornerRadius(8) // Rounded corners
-                    .padding(.trailing, 16) // Add 16 padding to the right
                 }
                 .frame(maxWidth: .infinity)
 
@@ -188,7 +194,8 @@ struct RideCardView: View {
             .padding(.leading, 16)
             .padding(.trailing, 16)
             .padding(.bottom, 12)
-        }//end of ZStack (boundary)
+        }
+        //end of ZStack (boundary)
     }
     private func styledProfileImage(_ image: Image) -> some View {
         image
@@ -204,8 +211,8 @@ struct RideCardView: View {
 let user: User = User(id: 1, name: "Lin Jin", rating: 5.0, numRatings:5, profilePicURL: "https://i.scdn.co/image/ab67616100005174bcb1c184c322688f10cdce7a", loudness: 5, musicPreference: "ROCK AND ROLLLL", funFact: "pokemon :)", phoneNumber: "xxx-xxx-xxxx", pronouns: "She/Her", grade: "She/Her", location: "Senior", email: "linjin@gmail.com")
 let ride_card1: TripInfo = TripInfo(id:1, driver: user,  bookmarked: false, price: 15, departureTime: Date(), arrivalTime: Date(), meetingLocation: "161 Ho Plaza, Ithaca, NY", destination: "So Ho, New York, NY", gender_preference: "All females", availableSeats: 2, totalSeats: 4)
 
-struct RideCard_Previews: PreviewProvider {
-    static var previews: some View {
-        RideCardView(ride_card: ride_card1)
-    }
-}
+//struct RideCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RideCardView(ride_card: ride_card1)
+//    }
+//}
