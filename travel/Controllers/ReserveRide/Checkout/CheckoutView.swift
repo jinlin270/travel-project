@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CheckoutView: View {
     var tripInfo: TripInfo
-    @State private var NavHome = false
+    @State private var NavDetails = false
+    @State private var NavRideReserved = false
     @StateObject private var imageFetcher = ImageFetcher()
     @ObservedObject var luggageModel = LuggageModel()
     @State private var coupon = ""
@@ -18,7 +19,7 @@ struct CheckoutView: View {
         VStack{//VStack1
             HStack{
                 Button(action: {
-                    NavHome = true
+                    NavDetails = true
                 }) {
                     Image("SimpleArrowLeft")
                         .resizable()
@@ -228,8 +229,7 @@ struct CheckoutView: View {
 
             
             Button(action: {
-                        // Action for the button
-                        print("Button tapped!")
+                    NavRideReserved = true
                     }) {
                         Text("Check Out")
                             .foregroundColor(.black) // White text color
@@ -245,10 +245,14 @@ struct CheckoutView: View {
 
             //VStack1
         }
-        .navigationDestination(isPresented: $NavHome) {
+        .navigationDestination(isPresented: $NavDetails) {
             ExploreRides()}
+        .navigationDestination(isPresented: $NavRideReserved) {
+            RideReserved()}
         .navigationBarHidden(true) //for hiding back button in uikit
         .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
+        
+        
         
     }//View
     
