@@ -90,7 +90,7 @@ struct GroupView: View {
                 ExploreRides()  // Destination for Home
             }
             .navigationDestination(isPresented: $NavCommunity) {
-                OnboardingController2()  // Destination for Community
+                GroupView()  // Destination for Community
             }
             .navigationDestination(isPresented: $NavProfile) {
                 ProfilePageView()  // Destination for Profile
