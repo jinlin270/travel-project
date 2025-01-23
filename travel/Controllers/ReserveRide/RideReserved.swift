@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct RideReserved: View {
+    var reserveOrOffer: String
     @State private var NavHome = false
     @State private var NavCommunity = false
     @State private var NavProfile = false
@@ -40,28 +41,33 @@ struct RideReserved: View {
                         .foregroundColor(.black)  // Text color inside the button
                         .font(.system(size: 24, weight: .bold))
                         .padding(.bottom, 16)
+                        .background(.clear)  // Make sure background is clear
                     
-                    Text("You successfully reserved the ride!")
-                        .foregroundColor(.black)  // Text color inside the button
+                    Text("You successfully \(reserveOrOffer) the ride!")
+                        .foregroundColor(.black)
                         .font(.system(size: 16, weight: .bold))
                         .padding(.bottom, 16)
-                     
-                    HStack{
+                        .background(.clear)  // Make sure background is clear
+
+                    HStack {
                         Text("See your ride information in ")
-                            .foregroundColor(.black)  // Text color inside the button
+                            .foregroundColor(.black)
                             .font(.system(size: 16))
+                            .background(.clear)  // Make sure background is clear
                         
                         Button(action: {
                             NavProfile = true
-                        }){
+                        }) {
                             Text("Profile")
-                                .foregroundColor(Constants.blue)  // Text color inside the button
+                                .foregroundColor(Constants.blue)
                                 .font(.system(size: 16, weight: .bold))
                                 .underline()
                                 .padding(.leading, -5)
                         }
+                        .background(.clear)  // Make sure background is clear
                     }
-                 
+                    .background(.clear)  // Ensure HStack also has clear background
+
                     BottomNavigationBar(
                         NavHome: $NavHome,
                         NavCommunity: $NavCommunity,
@@ -69,8 +75,9 @@ struct RideReserved: View {
                     )
                     .zIndex(1) // Ensure this layer is above the background
                 }
+                .background(.clear)  // Ensure VStack also has clear background
                 .zIndex(1) // Make sure foreground content is above the background image
-                
+
             }
             .navigationDestination(isPresented: $NavHome) {
                 ExploreRides() // Destination for Home
@@ -87,6 +94,6 @@ struct RideReserved: View {
 
 struct RideReserved_Previews: PreviewProvider {
     static var previews: some View {
-        RideReserved()
+        RideReserved(reserveOrOffer: "reserved")
     }
 }

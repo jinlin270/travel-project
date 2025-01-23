@@ -14,7 +14,7 @@ struct BottomNavigationBar: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Spacer() // Push the navigation bar to the bottom of the screen
+                Spacer().background(.clear) // Push the navigation bar to the bottom of the screen
                 
                 HStack(alignment: .top, spacing: 8) {
                     // Add your navigation bar items here
@@ -71,7 +71,7 @@ struct BottomNavigationBar: View {
             }
             .edgesIgnoringSafeArea(.bottom)
             
-        }.background(Color(.systemBackground))
+        }.background(Color(.clear))
             .navigationBarHidden(true) //for hiding back button in uikit
             .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
 

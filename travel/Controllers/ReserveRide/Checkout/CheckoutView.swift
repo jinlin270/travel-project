@@ -248,7 +248,7 @@ struct CheckoutView: View {
         .navigationDestination(isPresented: $NavDetails) {
             ExploreRides()}
         .navigationDestination(isPresented: $NavRideReserved) {
-            RideReserved()}
+            RideReserved(reserveOrOffer: "reserved")}
         .navigationBarHidden(true) //for hiding back button in uikit
         .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
         
