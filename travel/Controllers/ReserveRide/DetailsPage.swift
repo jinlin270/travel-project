@@ -94,7 +94,9 @@ struct DetailsPage: View {
             CheckoutView(tripInfo: tripInfo)
                 .navigationBarHidden(true) //for hiding back button in uikit
                 .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
-        } //VStack1
+        }
+        .navigationBarHidden(true) //for hiding back button in uikit
+        .navigationBarBackButtonHidden(true) //for hiding back button in swiftui //VStack1
     }//View
 }
 

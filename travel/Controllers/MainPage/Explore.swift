@@ -20,7 +20,7 @@ struct ExploreRides: View {
     @State private var showSearchWindow = false
     @State private var searchRide: Bool = false
     @State private var selectedTrip: TripInfo? = nil
-    @State private var isNavigatingToCheckout = false
+    @State private var isNavigatingToDetails = false
     
     var currentDate: Date {
         Date()
@@ -139,7 +139,7 @@ struct ExploreRides: View {
           
                 ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $isRideInfo, onTripSelected: { trip in
                     selectedTrip = trip
-                    isNavigatingToCheckout = true
+                    isNavigatingToDetails = true
                 })
                     .frame(minHeight: 100)
                
@@ -176,9 +176,6 @@ struct ExploreRides: View {
                     NavProfile: $NavProfile
                 )
             }
-            .navigationDestination(isPresented: $NavHome) {
-                ExploreRides()  // Destination for Home
-            }
             .navigationDestination(isPresented: $NavCommunity) {
                 GroupView()  // Destination for Community
             }
@@ -188,9 +185,9 @@ struct ExploreRides: View {
             .navigationDestination(isPresented: $RequestRide) {
                 RequestRideForm(isRideOffer: $isRideOffer)  // Destination for Home
             }
-            .navigationDestination(isPresented: $isNavigatingToCheckout) {
+            .navigationDestination(isPresented: $isNavigatingToDetails) {
                 if let trip = selectedTrip {
-                    CheckoutView(tripInfo: trip)
+                    DetailsPage(tripInfo: trip)
                 }
             }
             

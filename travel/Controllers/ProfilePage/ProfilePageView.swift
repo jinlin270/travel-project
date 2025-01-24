@@ -211,9 +211,6 @@ struct ProfilePageView: View {
                 .navigationDestination(isPresented: $NavCommunity) {
                     GroupView()  // Destination for Community
                 }
-                .navigationDestination(isPresented: $NavProfile) {
-                    ProfilePageView()  // Destination for Profile
-                }
                  
                     //End VStack 2
                 }.frame( maxHeight: .infinity, alignment: .top)

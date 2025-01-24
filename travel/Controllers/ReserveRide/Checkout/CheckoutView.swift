@@ -246,7 +246,7 @@ struct CheckoutView: View {
             //VStack1
         }
         .navigationDestination(isPresented: $NavDetails) {
-            ExploreRides()}
+            DetailsPage(tripInfo: tripInfo)}
         .navigationDestination(isPresented: $NavRideReserved) {
             RideReserved(reserveOrOffer: "reserved")}
         .navigationBarHidden(true) //for hiding back button in uikit
