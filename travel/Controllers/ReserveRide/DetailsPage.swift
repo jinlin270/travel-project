@@ -44,7 +44,17 @@ struct DetailsPage: View {
             //TODO: Profile min
             
             //TODO: Stop Display
-            
+            StopsView(
+                stops: ["Stop 1", "Stop 2", "Stop 3", "Stop 4"],
+                arrivalTimes: [
+                    Date(),
+                    Date().addingTimeInterval(3600),
+                    Date().addingTimeInterval(7200),
+                    Date().addingTimeInterval(10800)
+                ]
+            ).frame(width:261)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 16)
             //TODO: Guest Display
             
             Divider()
