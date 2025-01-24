@@ -41,9 +41,7 @@
 		20738A592D4051EA00E6B0A8 /* FancyRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A582D4051E100E6B0A8 /* FancyRadioButton.swift */; };
 		20738A5C2D4052D800E6B0A8 /* SwappedRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A5B2D4052B500E6B0A8 /* SwappedRadioButton.swift */; };
 		20738A642D407F2F00E6B0A8 /* SearchRides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A632D407F2B00E6B0A8 /* SearchRides.swift */; };
-		20738A672D408A4900E6B0A8 /* DetailsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A662D408A4600E6B0A8 /* DetailsPage.swift */; };
 		20738A6B2D408A9100E6B0A8 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6A2D408A8F00E6B0A8 /* MapModel.swift */; };
-		20738A6D2D408AAF00E6B0A8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6C2D408AAD00E6B0A8 /* MapView.swift */; };
 		20738A6F2D408AE400E6B0A8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A6E2D408AE000E6B0A8 /* LocationManager.swift */; };
 		20738A742D41562A00E6B0A8 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A732D41561E00E6B0A8 /* GroupView.swift */; };
 		20738A762D41563100E6B0A8 /* MyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A752D41562D00E6B0A8 /* MyGroupView.swift */; };
@@ -70,6 +68,11 @@
 		20BA9A5D2D3EB932006E44E9 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A5C2D3EB930006E44E9 /* Buttons.swift */; };
 		20BA9A5F2D3EBB90006E44E9 /* TripInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A5E2D3EBB89006E44E9 /* TripInfo.swift */; };
 		20BA9A612D3ECB66006E44E9 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BA9A602D3ECB64006E44E9 /* Slider.swift */; };
+		20BF11102D431ED900CA9669 /* StopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF110F2D431ED700CA9669 /* StopsView.swift */; };
+		20BF11122D4320B400CA9669 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF11112D4320B400CA9669 /* MapView.swift */; };
+		20BF11142D4320F000CA9669 /* DetailsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF11132D4320F000CA9669 /* DetailsPage.swift */; };
+		20BF11162D43210800CA9669 /* DriverInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF11152D43210800CA9669 /* DriverInfoView.swift */; };
+		20BF11182D43219D00CA9669 /* tempData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BF11172D43219D00CA9669 /* tempData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,9 +112,7 @@
 		20738A582D4051E100E6B0A8 /* FancyRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyRadioButton.swift; sourceTree = "<group>"; };
 		20738A5B2D4052B500E6B0A8 /* SwappedRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwappedRadioButton.swift; sourceTree = "<group>"; };
 		20738A632D407F2B00E6B0A8 /* SearchRides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRides.swift; sourceTree = "<group>"; };
-		20738A662D408A4600E6B0A8 /* DetailsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPage.swift; sourceTree = "<group>"; };
 		20738A6A2D408A8F00E6B0A8 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
-		20738A6C2D408AAD00E6B0A8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		20738A6E2D408AE000E6B0A8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		20738A732D41561E00E6B0A8 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		20738A752D41562D00E6B0A8 /* MyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupView.swift; sourceTree = "<group>"; };
@@ -138,6 +139,11 @@
 		20BA9A5C2D3EB930006E44E9 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		20BA9A5E2D3EBB89006E44E9 /* TripInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfo.swift; sourceTree = "<group>"; };
 		20BA9A602D3ECB64006E44E9 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		20BF110F2D431ED700CA9669 /* StopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsView.swift; sourceTree = "<group>"; };
+		20BF11112D4320B400CA9669 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		20BF11132D4320F000CA9669 /* DetailsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPage.swift; sourceTree = "<group>"; };
+		20BF11152D43210800CA9669 /* DriverInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverInfoView.swift; sourceTree = "<group>"; };
+		20BF11172D43219D00CA9669 /* tempData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempData.swift; sourceTree = "<group>"; };
 		CE54AF26BEA8F3DCFF626DC8 /* Pods_travel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_travel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -273,6 +279,7 @@
 				20BA9A4A2D3D9DF1006E44E9 /* User.swift */,
 				200FF9402D3C756B00E5A017 /* ImageFetcher.swift */,
 				20738A542D404D1A00E6B0A8 /* TextFieldViewModel.swift */,
+				20BF11172D43219D00CA9669 /* tempData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,11 +315,13 @@
 		20738A652D408A3100E6B0A8 /* ReserveRide */ = {
 			isa = PBXGroup;
 			children = (
+				20BF11152D43210800CA9669 /* DriverInfoView.swift */,
+				20BF11132D4320F000CA9669 /* DetailsPage.swift */,
+				20BF110F2D431ED700CA9669 /* StopsView.swift */,
 				20738A942D42BEE900E6B0A8 /* RideReserved.swift */,
 				20738A8C2D42AAD700E6B0A8 /* Checkout */,
 				20738A6E2D408AE000E6B0A8 /* LocationManager.swift */,
-				20738A6C2D408AAD00E6B0A8 /* MapView.swift */,
-				20738A662D408A4600E6B0A8 /* DetailsPage.swift */,
+				20BF11112D4320B400CA9669 /* MapView.swift */,
 			);
 			path = ReserveRide;
 			sourceTree = "<group>";
@@ -464,12 +473,15 @@
 				200FF9552D3CF30200E5A017 /* ToggleView.swift in Sources */,
 				20738A6B2D408A9100E6B0A8 /* MapModel.swift in Sources */,
 				20738A902D42AE5600E6B0A8 /* Numbers.swift in Sources */,
+				20BF11162D43210800CA9669 /* DriverInfoView.swift in Sources */,
 				20738A7D2D41BA7F00E6B0A8 /* CommunityBar.swift in Sources */,
 				20738A8E2D42AAF900E6B0A8 /* CheckoutView.swift in Sources */,
 				20BA9A612D3ECB66006E44E9 /* Slider.swift in Sources */,
 				200FF9292D21C7CE00E5A017 /* NavigationButtons.swift in Sources */,
+				20BF11102D431ED900CA9669 /* StopsView.swift in Sources */,
 				20BA9A4B2D3D9DF5006E44E9 /* User.swift in Sources */,
 				20738A782D41569D00E6B0A8 /* GroupModel.swift in Sources */,
+				20BF11142D4320F000CA9669 /* DetailsPage.swift in Sources */,
 				200FF92F2D3AED9600E5A017 /* OnboardingProfile.swift in Sources */,
 				200FF9412D3C757200E5A017 /* ImageFetcher.swift in Sources */,
 				200FF9512D3CE5EF00E5A017 /* CalendarBar.swift in Sources */,
@@ -478,7 +490,6 @@
 				20076E0B2C8777A900D79D60 /* AppDelegate.swift in Sources */,
 				20738A592D4051EA00E6B0A8 /* FancyRadioButton.swift in Sources */,
 				200FF9362D3C456800E5A017 /* NavigationBar.swift in Sources */,
-				20738A672D408A4900E6B0A8 /* DetailsPage.swift in Sources */,
 				20738A572D404FEA00E6B0A8 /* CustomTextFieldStyle.swift in Sources */,
 				200FF9382D3C5D1B00E5A017 /* Explore.swift in Sources */,
 				20738A642D407F2F00E6B0A8 /* SearchRides.swift in Sources */,
@@ -487,12 +498,12 @@
 				20738A762D41563100E6B0A8 /* MyGroupView.swift in Sources */,
 				20076E5D2CB35DD300D79D60 /* OnboardingController2.swift in Sources */,
 				200FF9452D3C95D700E5A017 /* RideCardView.swift in Sources */,
-				20738A6D2D408AAF00E6B0A8 /* MapView.swift in Sources */,
 				200FF9492D3C97E400E5A017 /* ScrollCardsView.swift in Sources */,
 				20076E372CAA4FCD00D79D60 /* WelcomeController4.swift in Sources */,
 				20738A862D41C48900E6B0A8 /* ChatView.swift in Sources */,
 				200FF94D2D3CD2A900E5A017 /* Calendar.swift in Sources */,
 				200FF9312D3AF2C400E5A017 /* UploadPicture.swift in Sources */,
+				20BF11122D4320B400CA9669 /* MapView.swift in Sources */,
 				20738A8A2D41C95300E6B0A8 /* SearchButton.swift in Sources */,
 				20BA9A5D2D3EB932006E44E9 /* Buttons.swift in Sources */,
 				20738A922D42B1FE00E6B0A8 /* Constants.swift in Sources */,
@@ -513,6 +524,7 @@
 				20738A822D41C44800E6B0A8 /* MessageModel.swift in Sources */,
 				20738A4E2D40127A00E6B0A8 /* FilterTextField.swift in Sources */,
 				20738A5C2D4052D800E6B0A8 /* SwappedRadioButton.swift in Sources */,
+				20BF11182D43219D00CA9669 /* tempData.swift in Sources */,
 				20738A742D41562A00E6B0A8 /* GroupView.swift in Sources */,
 				20738A532D4048D500E6B0A8 /* RequestRideForm.swift in Sources */,
 			);
