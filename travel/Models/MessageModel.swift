@@ -6,9 +6,11 @@
 //
 import SwiftUI
 
-struct Message: Identifiable {
-    var id: String
+struct Message: Identifiable, Decodable {
+    var id: Int
     var sender: User
     var content: String
     var timestamp: Date
+    var group: GroupModel?      // set for group messages
+    var recipient: User?        // set for direct messages
 }
