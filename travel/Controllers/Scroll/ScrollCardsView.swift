@@ -84,7 +84,7 @@ struct ScrollCardsView: View {
             if isMyGroup {
                 ForEach(viewModel.communityGroups, id: \.id) { group in
                     MyGroupCardView(group: group)
-                        .padding()
+                        .padding(.vertical, 12)
                         .onAppear {
                             loadMoreDataIfNeeded(group: group)
                         }
@@ -92,7 +92,7 @@ struct ScrollCardsView: View {
             } else {
                 ForEach(viewModel.communityGroups, id: \.id) { group in
                     CommunityGroupCardView(group: group)
-                        .padding()
+                        .padding(.vertical, 12)
                         .onAppear {
                             loadMoreDataIfNeeded(group: group)
                         }

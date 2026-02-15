@@ -12,7 +12,7 @@ struct MyGroupCardView: View {
     
     
     var body: some View {
-        HStack{
+        HStack(spacing: 16) {
             if let image = imageFetcher.image {
                 styledProfileImage(Image(uiImage: image))
             } else {
@@ -21,46 +21,38 @@ struct MyGroupCardView: View {
                         imageFetcher.fetchImage(from: group.profilePicture)
                     }
             }
-            
-            Spacer().frame(width: 16)
-            VStack{
-                HStack{
-                    Text("\(group.groupName)") // Use the provided button text
+
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 8) {
+                    Text(group.groupName)
                         .font(.system(size: 14, weight: .bold))
                         .foregroundColor(.black)
-                        .frame(alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth:.infinity, alignment: .leading)
-                    
+                        .lineLimit(1)
+
+                    Spacer(minLength: 8)
+
                     Image("unreadChat")
                         .resizable()
                         .frame(width: 16, height: 16)
                         .cornerRadius(12)
                 }
-                
-                
-                HStack{
+
+                HStack(spacing: 8) {
                     Text(group.isPublic ? "Public group" : "Private group")
                         .font(.system(size: 12))
                         .foregroundColor(.black)
-                        .frame(alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth:.infinity, alignment: .leading)
-                    
-                    Spacer()
-                    
+
+                    Spacer(minLength: 8)
+
                     //TODO: Make number correspond to num unread texts
                     Text("10+ new")
                         .font(.system(size: 12))
                         .foregroundColor(.black)
-                        .frame(alignment: .leading)
-                        .frame(maxWidth:.infinity, alignment: .trailing)
-                    
                 }
             }
-        
         }
-    
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 24)
     }
     private func styledProfileImage(_ image: Image) -> some View {
         image

@@ -22,70 +22,74 @@ struct GroupView: View {
     @State private var isMenuOpen: Bool = false
 
     var body: some View {
-        
-        VStack {
-            // Your main content here, for example:
-        
-                Text("Community")
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.black)
-                    .frame(alignment: .center)
-                
-                Spacer()
-                
+        VStack(spacing: 0) {
+            // Header
+            Text("Community")
+                .font(.system(size: 18, weight: .bold))
+                .foregroundColor(.black)
+                .padding(.top, 8)
+                .padding(.horizontal, 24)
+
+            Spacer().frame(height: 8)
+
             CommunityBar()
-            
-            ZStack{
-                VStack{
-                    HStack{
-                        DropdownMenu(selectedOption: $selectedOption, isMenuOpen: $isMenuOpen).padding(.leading, 16)
+
+            // Main content
+            ZStack {
+                VStack(spacing: 0) {
+                    // Dropdown and Search Bar
+                    HStack(spacing: 8) {
+                        DropdownMenu(selectedOption: $selectedOption, isMenuOpen: $isMenuOpen)
                         SearchBar()
-                    }.padding(.horizontal, 16)
+                    }
+                    .padding(.horizontal, 24)
                     .zIndex(1)
-                        
-                    
-                    HStack{
+
+                    // Filter and See all
+                    HStack {
                         Text("\(selectedOption)")
                             .font(.system(size: 12))
                             .foregroundColor(.black)
-                            .padding(.leading , 16)
-                        
+
                         Spacer()
-                        
+
                         Text("See all")
                             .font(.system(size: 12))
                             .foregroundColor(.black)
-                            .padding(.trailing , 16)
-                    }.padding(.bottom, -30)
-                        .padding(.top, 16)
-                    
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.top, 16)
+                    .padding(.bottom, 8)
+
+                    // Community Groups ScrollView
                     ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $notMyGroup)
                         .frame(minHeight: 100)
-                    
+                        .padding(.top, 8)
 
+                    // Your Group Header
                     Text("Your Group")
                         .font(.system(size: 12))
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading , 16)
-                        .padding(.bottom, -30)
+                        .padding(.horizontal, 24)
                         .padding(.top, 16)
-        
-                    
+                        .padding(.bottom, 8)
+
+                    // Your Groups ScrollView
                     ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $MyGroup)
                         .frame(minHeight: 100)
+                        .padding(.top, 8)
                 }
-                
             }
-          
 
-            // Add the BottomNavigationBar
-                BottomNavigationBar(
-                    NavHome: $NavHome,
-                    NavCommunity: $NavCommunity,
-                    NavProfile: $NavProfile
-                )
-            }
+            // Bottom Navigation Bar
+            BottomNavigationBar(
+                NavHome: $NavHome,
+                NavCommunity: $NavCommunity,
+                NavProfile: $NavProfile
+            )
+        }
+        .frame(maxWidth: .infinity)
             .navigationDestination(isPresented: $NavHome) {
                 ExploreRides()  // Destination for Home
             }
