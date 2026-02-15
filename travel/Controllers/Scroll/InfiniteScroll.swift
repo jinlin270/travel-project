@@ -22,7 +22,7 @@ class InfiniteScroll: ObservableObject {
     
     @Published var isLoading: Bool = false
     @Published var hasMoreData: Bool = true
-    private var currentPage = 1
+    private var currentPage = 0  // Spring Data pagination is 0-indexed
     private var totalPages = 1
     
     init(isRideOffer: Binding<Bool>, isRideInfo: Binding<Bool>) {
@@ -44,42 +44,39 @@ class InfiniteScroll: ObservableObject {
         rideCards = [TripInfo(
             id: 1,
             driver: user1,
-            bookmarked: false,
             price: 15,
             departureTime: Date(),
             arrivalTime: Date(),
             meetingLocation: "161 Ho Plaza, Ithaca, NY",
             destination: "So Ho, New York, NY",
-            gender_preference: "All females",
+            genderPreference: "All females",
             availableSeats: 2,
             totalSeats: 4
         ),
             TripInfo(
-                            id: 2,
-                            driver: user1,
-                            bookmarked: false,
-                            price: 15,
-                            departureTime: Date(),
-                            arrivalTime: Date(),
-                            meetingLocation: "161 Ho Plaza, Ithaca, NY",
-                            destination: "So Ho, New York, NY",
-                            gender_preference: "All females",
-                            availableSeats: 2,
-                            totalSeats: 4
-                        ),
-             TripInfo(
-                             id: 3,
-                             driver: user1,
-                             bookmarked: false,
-                             price: 15,
-                             departureTime: Date(),
-                             arrivalTime: Date(),
-                             meetingLocation: "161 Ho Plaza, Ithaca, NY",
-                             destination: "So Ho, New York, NY",
-                             gender_preference: "All females",
-                             availableSeats: 2,
-                             totalSeats: 4
-                         )]
+                id: 2,
+                driver: user1,
+                price: 15,
+                departureTime: Date(),
+                arrivalTime: Date(),
+                meetingLocation: "161 Ho Plaza, Ithaca, NY",
+                destination: "So Ho, New York, NY",
+                genderPreference: "All females",
+                availableSeats: 2,
+                totalSeats: 4
+            ),
+            TripInfo(
+                id: 3,
+                driver: user1,
+                price: 15,
+                departureTime: Date(),
+                arrivalTime: Date(),
+                meetingLocation: "161 Ho Plaza, Ithaca, NY",
+                destination: "So Ho, New York, NY",
+                genderPreference: "All females",
+                availableSeats: 2,
+                totalSeats: 4
+            )]
         communityGroups = [GroupModel(id: 1, groupName: "Cornell 2025", profilePicture: "https://cdn.britannica.com/08/235008-050-C82C6C44/Cornell-University-Uris-Library-Ithaca-New-York.jpg", isPublic: true, numMembers: 15, filterTags: Set(arrayLiteral: "Popular"), latitude: Double(42.4534), longitude: Double(76.4735))]
         
         _isRideOffer = isRideOffer

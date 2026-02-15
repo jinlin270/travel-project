@@ -131,7 +131,7 @@ struct DriverInfoView: View {
 
 struct DriverInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        DriverInfoView(driver: trip1.driver)
+        DriverInfoView(driver: user1)
             .previewDevice("iPhone 14") // You can adjust this to your preferred device
             .previewLayout(.sizeThatFits) // Makes the preview fit content size
     }

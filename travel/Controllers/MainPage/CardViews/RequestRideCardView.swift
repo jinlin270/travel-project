@@ -73,7 +73,7 @@ struct RequestRideCardView: View {
                         Spacer()
                         
                         
-                        Text("\(ride_card.gender_preference)")
+                        Text("\(ride_card.genderPreference)")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.black)
                         

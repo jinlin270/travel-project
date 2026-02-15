@@ -42,7 +42,7 @@ struct RideCardView: View {
                     VStack{
                         //VStack2 (name and review)
                         HStack{
-                            Text(ride_card.driver.name)
+                            Text(ride_card.driver?.name ?? "")
                                 .font(.system(size: 16, weight: .bold))
                                 .foregroundColor(.black)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -58,14 +58,14 @@ struct RideCardView: View {
                             Image("star")
                                 .resizable()
                                 .frame(width: 12, height: 12)
-                            Text(String(ride_card.driver.rating))
+                            Text(String(ride_card.driver?.rating ?? 0.0))
                                 .font(.system(size: 12))
                                 .foregroundColor(.black)
                             Image("dot")
                                 .resizable()
                                 .frame(width: 3, height: 3)
                             
-                            Text("\(ride_card.driver.numRatings) reviews")
+                            Text("\(ride_card.driver?.numRatings ?? 0) reviews")
                                 .font(.system(size: 12))
                                 .foregroundColor(.black)
                             
@@ -139,7 +139,7 @@ struct RideCardView: View {
                     Spacer()
                     
                     VStack{//VStack4 (preference and availability)
-                        Text("\(ride_card.gender_preference)")
+                        Text("\(ride_card.genderPreference)")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.black)
                             .frame(height: 40 / 3)
@@ -209,7 +209,7 @@ struct RideCardView: View {
     
 
 let user: User = User(id: 1, name: "Lin Jin", rating: 5.0, numRatings:5, profilePicURL: "https://i.scdn.co/image/ab67616100005174bcb1c184c322688f10cdce7a", loudness: 5, musicPreference: "ROCK AND ROLLLL", funFact: "pokemon :)", phoneNumber: "xxx-xxx-xxxx", pronouns: "She/Her", grade: "She/Her", location: "Senior", email: "linjin@gmail.com")
-let ride_card1: TripInfo = TripInfo(id:1, driver: user,  bookmarked: false, price: 15, departureTime: Date(), arrivalTime: Date(), meetingLocation: "161 Ho Plaza, Ithaca, NY", destination: "So Ho, New York, NY", gender_preference: "All females", availableSeats: 2, totalSeats: 4)
+let ride_card1: TripInfo = TripInfo(id: 1, driver: user, price: 15, departureTime: Date(), arrivalTime: Date(), meetingLocation: "161 Ho Plaza, Ithaca, NY", destination: "So Ho, New York, NY", genderPreference: "All females", availableSeats: 2, totalSeats: 4)
 
 //struct RideCard_Previews: PreviewProvider {
 //    static var previews: some View {

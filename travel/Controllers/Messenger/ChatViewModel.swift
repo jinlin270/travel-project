@@ -19,7 +19,7 @@ class ChatViewModel: ObservableObject {
     }
 
     func sendMessage() {
-        let newMessage = Message(id: UUID().uuidString,
+        let newMessage = Message(id: Int.random(in: Int.min..<0),
                                  sender: currentUser,
                                  content: currentMessage,
                                  timestamp: Date())

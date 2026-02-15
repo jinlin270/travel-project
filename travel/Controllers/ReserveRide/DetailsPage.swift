@@ -40,7 +40,9 @@ struct DetailsPage: View {
             
             //TODO: Map View
             
-            DriverInfoView(driver: tripInfo.driver)
+            if let driver = tripInfo.driver {
+                DriverInfoView(driver: driver)
+            }
             //TODO: Profile min
             
             //TODO: Stop Display
