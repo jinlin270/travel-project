@@ -6,7 +6,7 @@ struct OnboardingController3: View {
     @State private var PrevPage = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Image("progressBar6")
                     .resizable()
@@ -87,8 +87,8 @@ struct OnboardingController3: View {
                 }
                 
                 Spacer()
-                
-                NavigationButtons(   onBack: {
+
+                NavigationButtons(onBack: {
                     PrevPage = true
                 },
                 onNext: {
@@ -100,10 +100,10 @@ struct OnboardingController3: View {
                 .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
                 .navigationDestination(isPresented: $NextPage) {
                     OnboardingProfile()
-                            }
+                }
                 .navigationDestination(isPresented: $PrevPage) {
                     OnboardingController2()
-                            }
+                }
         }
     }
 }
