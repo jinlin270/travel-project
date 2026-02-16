@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import GoogleSignIn
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -45,11 +46,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 2. Create a new UIWindow and pass in a UIWindowScene
         let window = UIWindow(windowScene: windowScene)
         
-        // 3. Create a SwiftUI view that includes NavigationStack
-        let initialSwiftUIView = OnboardingProfile() // Your initial SwiftUI view
-        
-        // Use a UIHostingController with the SwiftUI view
-        let hostingController = UIHostingController(rootView: initialSwiftUIView)
+        // 3. RootView checks AuthManager.isAuthenticated and routes to either
+        //    the Welcome/Onboarding flow (new users) or ExploreRides (returning users).
+        let hostingController = UIHostingController(rootView: RootView())
         
         // 4. Set the rootViewController directly to the hostingController
         window.rootViewController = hostingController
@@ -59,6 +58,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
 
+
+    // Handle the Google Sign-In OAuth redirect.
+    // In scene-based apps, URL callbacks are delivered here — NOT to
+    // AppDelegate.application(_:open:options:).
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        GIDSignIn.sharedInstance.handle(url)
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

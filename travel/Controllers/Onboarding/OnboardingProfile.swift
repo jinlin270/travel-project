@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct OnboardingProfile: View {
+
+    @EnvironmentObject private var onboardingVM: OnboardingViewModel
     @State private var NextPage = false
     @State private var PrevPage = false
 
     var body: some View {
-        NavigationStack { // Use NavigationStack for iOS 16 and later
+        NavigationStack {
             VStack {
                 Image("progressBar6")
                     .resizable()
@@ -36,8 +38,30 @@ struct OnboardingProfile: View {
                         PrevPage = true
                     },
                     onNext: {
-                        NextPage = true
-                    })
+                        // POST collected profile data to /user/register.
+                        // On success, UserManager.shared.user is populated and
+                        // RootView's isAuthenticated state routes to ExploreRides.
+                        Task {
+                            await onboardingVM.register()
+                            if onboardingVM.registrationError == nil {
+                                NextPage = true
+                            }
+                        }
+                    }
+                )
+                .overlay(alignment: .top) {
+                    if onboardingVM.isRegistering {
+                        ProgressView()
+                            .offset(y: -24)
+                    } else if let error = onboardingVM.registrationError {
+                        Text(error)
+                            .font(.footnote)
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                            .offset(y: -24)
+                    }
+                }
                 
             }
             .background(Color(.systemBackground))
@@ -56,5 +80,6 @@ struct OnboardingProfile: View {
 struct OnboardingProfile_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingProfile()
+            .environmentObject(OnboardingViewModel())
     }
 }

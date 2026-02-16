@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,9 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        FirebaseApp.configure()
-//        Auth.auth().useEmulator(withHost: "localhost", port: 9099)
+        // Configure Google Sign-In.
+        // GIDClientID is also in Info.plist; explicit config here ensures
+        // sign-in works even if the plist key is missing.
+        let clientID = "211860357731-hu0sboj77bhilbr1lr9hdbvpvhfsld4d.apps.googleusercontent.com"
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
         return true
     }
 
@@ -25,6 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+
+    // Required for Google Sign-In to complete the OAuth redirect.
+    func application(_ app: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance.handle(url)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {

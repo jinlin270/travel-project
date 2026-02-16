@@ -39,12 +39,16 @@ final class AuthManager: ObservableObject {
     }
 
     @Published var isAuthenticated: Bool = false
+    /// True when the JWT is valid but the user has not yet completed onboarding.
+    /// RootView uses this to route to the onboarding flow instead of ExploreRides.
+    @Published var needsOnboarding: Bool = false
     @Published var authError: String?
 
     // MARK: - Sign In
 
     /// Call this immediately after receiving a Google ID token from Google Sign-In SDK.
     /// Verifies the token with the backend, stores the JWT, and fetches the full user profile.
+    /// Sets `needsOnboarding = true` if the profile is incomplete (new user).
     func signIn(withGoogleIdToken idToken: String) async {
         authError = nil
         do {
@@ -55,9 +59,9 @@ final class AuthManager: ObservableObject {
                 body: ["idToken": idToken]
             )
 
-            // 2. Persist JWT in Keychain
+            // 2. Persist JWT in Keychain (must come before isAuthenticated = true
+            //    so that APIClient can attach the Bearer header on the next call)
             saveToken(authResponse.token)
-            isAuthenticated = true
 
             // 3. Fetch the full User entity so UserManager has all fields
             let fullUser: User = try await APIClient.shared.request(
@@ -65,6 +69,14 @@ final class AuthManager: ObservableObject {
             )
             UserManager.shared.user = fullUser
             UserManager.shared.saveUserToStorage(fullUser)
+
+            // 4. Determine whether onboarding is still needed.
+            //    A new user will have an empty name until they complete the flow.
+            needsOnboarding = fullUser.name.trimmingCharacters(in: .whitespaces).isEmpty
+
+            // 5. isAuthenticated flips last — this is the signal RootView listens to.
+            //    Everything above must succeed before we expose auth state.
+            isAuthenticated = true
 
         } catch let error as APIError {
             authError = error.errorDescription

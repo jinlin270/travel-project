@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 import SwiftUI
+import GoogleSignIn
 class WelcomeController4: UIViewController {
-    
+
     // MARK: - Properties (view)
     private let titleLabel = UILabel()
     private let detailsLabel = UILabel()
@@ -231,8 +232,42 @@ class WelcomeController4: UIViewController {
     }
 
     @objc private func googleButtonTapped() {
-        let onboardingController1 = UIHostingController(rootView: OnboardingController1())
-        navigationController?.pushViewController(onboardingController1, animated: true)
+        // 1. Trigger Google Sign-In sheet
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [weak self] result, error in
+            guard let self else { return }
+
+            if let error {
+                self.showAuthError(error.localizedDescription)
+                return
+            }
+
+            guard let idToken = result?.user.idToken?.tokenString else {
+                self.showAuthError("Google Sign-In succeeded but returned no ID token.")
+                return
+            }
+
+            // 2. Exchange Google ID token for our backend JWT.
+            //    On success, AuthManager sets isAuthenticated = true and RootView
+            //    routes to ExploreRides (returning user) or the onboarding flow
+            //    (new user, via needsOnboarding = true). No manual push needed here.
+            Task { @MainActor in
+                await AuthManager.shared.signIn(withGoogleIdToken: idToken)
+
+                if let authError = AuthManager.shared.authError {
+                    self.showAuthError(authError)
+                }
+            }
+        }
+    }
+
+    private func showAuthError(_ message: String) {
+        let alert = UIAlertController(
+            title: "Sign-In Failed",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     private func setupBackButton() {

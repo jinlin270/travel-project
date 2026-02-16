@@ -47,6 +47,20 @@ build/Release
 
 # Xcode build artifacts
 build/
+*.xcarchive
+DerivedData/
+*.moved-aside
+
+# Xcode per-user settings (workspace layout, breakpoints, etc.)
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Xcode scheme autogeneration
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# macOS noise
+.DS_Store
+**/.DS_Store
 
 # Dependency directories
 node_modules/

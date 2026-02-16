@@ -2,12 +2,10 @@ import SwiftUI
 import UIKit
 
 struct OnboardingController1: View {
-    
-    @State private var name: String = ""
-    @State private var school: String = ""
-    @State private var gender: String = "Select Gender" // Default value for the picker
-    @State private var pronoun: String = ""
-    @State private var phone: String = ""
+
+    @EnvironmentObject private var onboardingVM: OnboardingViewModel
+
+    @State private var gender: String = "Select Gender"
     @State private var NextPage = false
     
     let genders = ["Male", "Female", "Non-binary", "Other"] // Gender options
@@ -40,10 +38,10 @@ struct OnboardingController1: View {
                 
                 // Text Fields
                 VStack(spacing: 24) {
-                    TextField("Name", text: $name)
+                    TextField("Name", text: $onboardingVM.name)
                         .textFieldStyle(CustomTextFieldStyle())
-                    
-                    TextField("School", text: $school)
+
+                    TextField("School", text: $onboardingVM.school)
                         .textFieldStyle(CustomTextFieldStyle())
                     
                     // Gender Drop-down (Picker)
@@ -74,10 +72,10 @@ struct OnboardingController1: View {
                         )
                     }
                     
-                    TextField("Pronouns", text: $pronoun)
+                    TextField("Pronouns", text: $onboardingVM.pronouns)
                         .textFieldStyle(CustomTextFieldStyle())
-                    
-                    TextField("Phone number", text: $phone)
+
+                    TextField("Phone number", text: $onboardingVM.phoneNumber)
                         .textFieldStyle(CustomTextFieldStyle())
                 }
                 .padding(.top, 56)
@@ -130,5 +128,6 @@ struct OnboardingController1: View {
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingController1()
+            .environmentObject(OnboardingViewModel())
     }
 }
