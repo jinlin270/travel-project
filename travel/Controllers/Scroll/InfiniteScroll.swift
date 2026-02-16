@@ -4,21 +4,32 @@
 //
 //  ViewModel for paginated fetching of TripInfo and GroupModel.
 //
-//  Pagination contract (Spring Boot):
-//    GET /trips?isOffer={bool}&page={n}&size=10
-//    GET /groups?page={n}&size=10
-//    Response envelope: { "content": [...], "last": true/false, "totalPages": N }
+//  Pagination contract (Spring Boot 3):
+//    GET /trips/offers?page=N&size=10        → Page<TripInfo>
+//    GET /trips/requests/paginated?page=N&size=10 → Page<TripInfo>
+//    GET /groups?page=N&size=10              → Page<GroupModel>
+//
+//  Spring Boot 3 Page<T> JSON shape (metadata moved to nested "page" object):
+//    { "content": [...], "page": { "number": 0, "totalPages": 2, "totalElements": 15, "size": 10 } }
+//  Note: the top-level "last" field was removed in Spring Boot 3. Derive it from page.number + 1 >= page.totalPages.
 //
 
 import SwiftUI
 
-// MARK: - Spring Boot Page<T> envelope
+// MARK: - Spring Boot 3 Page<T> envelope
 
-/// Matches the Spring Boot Page<T> JSON shape.
-/// Only decodes the fields InfiniteScroll actually needs.
 private struct Page<T: Decodable>: Decodable {
     let content: [T]
-    let last: Bool
+    let page: PageMeta
+
+    var isLast: Bool { page.number + 1 >= page.totalPages }
+
+    struct PageMeta: Decodable {
+        let number: Int
+        let totalPages: Int
+        let totalElements: Int
+        let size: Int
+    }
 }
 
 // MARK: - InfiniteScroll ViewModel
@@ -66,10 +77,60 @@ class InfiniteScroll: ObservableObject {
         Task { await loadRideCards() }
     }
 
+    /// Called by .refreshable — fetches page 0 and replaces data only on success.
+    /// Does NOT clear rideCards before the network call so existing data stays
+    /// visible during the pull-to-refresh animation. If the task is cancelled
+    /// (e.g. user navigates away mid-refresh) the original data is preserved.
+    func refreshRideCards() async {
+        isLoading = true
+        errorMessage = nil
+        defer { isLoading = false }
+
+        let path = isRideOffer
+            ? "/trips/offers?page=0&size=\(pageSize)"
+            : "/trips/requests/paginated?page=0&size=\(pageSize)"
+
+        do {
+            let page: Page<TripInfo> = try await APIClient.shared.request(path)
+            rideCards = page.content   // Replace only on success
+            rideCurrentPage = 1
+            rideHasMore = !page.isLast
+        } catch is CancellationError {
+            return   // Keep existing data visible
+        } catch let urlErr as URLError where urlErr.code == .cancelled {
+            return   // Keep existing data visible
+        } catch let decodeErr as DecodingError {
+            errorMessage = "Decode error: \(decodeErr)"
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
     /// Call from ScrollCardsView when a group card is about to disappear off the bottom.
     func fetchCommunityGroups() {
         guard !isLoading && groupHasMore else { return }
         Task { await loadCommunityGroups() }
+    }
+
+    /// Called by .refreshable — replaces group data only on success.
+    func refreshCommunityGroups() async {
+        isLoading = true
+        errorMessage = nil
+        defer { isLoading = false }
+
+        do {
+            let groups: [GroupModel] = try await APIClient.shared.request("/groups")
+            communityGroups = groups   // Replace only on success
+            groupHasMore = false
+        } catch is CancellationError {
+            return
+        } catch let urlErr as URLError where urlErr.code == .cancelled {
+            return
+        } catch is DecodingError {
+            groupHasMore = false
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 
     /// Dispatched by ScrollCardsView's `.onAppear` / trigger logic.
@@ -122,10 +183,16 @@ class InfiniteScroll: ObservableObject {
             let page: Page<TripInfo> = try await APIClient.shared.request(path)
             rideCards.append(contentsOf: page.content)
             rideCurrentPage += 1
-            rideHasMore = !page.last
-        } catch is DecodingError {
-            // Backend returned empty or unexpected format — treat as no results
+            rideHasMore = !page.isLast
+        } catch let decodeErr as DecodingError {
+            errorMessage = "Decode error: \(decodeErr)"
             rideHasMore = false
+        } catch is CancellationError {
+            // Task was cancelled (view transitioned during pull-to-refresh) — not a user error
+            return
+        } catch let urlErr as URLError where urlErr.code == .cancelled {
+            // URLSession task cancelled due to task cancellation — not a user error
+            return
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -145,6 +212,10 @@ class InfiniteScroll: ObservableObject {
         } catch is DecodingError {
             // Backend returned empty or unexpected format — treat as no results
             groupHasMore = false
+        } catch is CancellationError {
+            return
+        } catch let urlErr as URLError where urlErr.code == .cancelled {
+            return
         } catch {
             errorMessage = error.localizedDescription
         }

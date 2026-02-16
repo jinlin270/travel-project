@@ -4,7 +4,7 @@
 //
 //  Centralized networking layer. All requests go through here so that:
 //    - The Bearer token is injected in one place
-//    - Date decoding (Spring Boot epoch-ms default) is configured once
+//    - Date decoding (Spring Boot 3 ISO 8601 with fractional seconds) is configured once
 //    - Error handling is uniform across the app
 //
 
@@ -39,12 +39,24 @@ struct APIClient {
     static let shared = APIClient()
     private init() {}
 
-    // One JSONDecoder for the whole app:
-    //   - Spring Boot serialises java.util.Date as epoch milliseconds by default
-    //   - camelCase keys already match Swift property names after Phase 1 fixes
+    // One JSONDecoder for the whole app.
+    // Spring Boot 3 serialises java.util.Date as ISO 8601 with fractional seconds:
+    //   e.g. "2026-02-18T02:10:43.453+00:00"
+    // Standard .iso8601 strategy doesn't handle fractional seconds, so we use
+    // ISO8601DateFormatter with .withFractionalSeconds.
     private let decoder: JSONDecoder = {
         let d = JSONDecoder()
-        d.dateDecodingStrategy = .millisecondsSince1970
+        let iso = ISO8601DateFormatter()
+        iso.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        d.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let str = try container.decode(String.self)
+            if let date = iso.date(from: str) { return date }
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Cannot decode date: \(str)"
+            )
+        }
         return d
     }()
 
@@ -100,6 +112,13 @@ struct APIClient {
         do {
             return try decoder.decode(T.self, from: data)
         } catch {
+            // Print raw JSON so decode mismatches are visible in the Xcode console
+            #if DEBUG
+            print("⚠️ APIClient decode error for \(T.self):\n\(error)")
+            if let raw = String(data: data, encoding: .utf8) {
+                print("⚠️ Raw response (\(path)):\n\(raw.prefix(2000))")
+            }
+            #endif
             throw APIError.decodingError(error)
         }
     }
@@ -107,7 +126,8 @@ struct APIClient {
     /// Perform an authenticated request that returns no body (204 No Content).
     func requestVoid(
         _ path: String,
-        method: String
+        method: String,
+        body: Encodable? = nil
     ) async throws {
         guard let url = URL(string: Constants.baseURL + path) else {
             throw APIError.invalidURL
@@ -115,9 +135,14 @@ struct APIClient {
 
         var req = URLRequest(url: url)
         req.httpMethod = method
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         if let token = AuthManager.shared.token {
             req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
+        if let body {
+            req.httpBody = try encoder.encode(AnyEncodable(body))
         }
 
         let (_, response) = try await URLSession.shared.data(for: req)

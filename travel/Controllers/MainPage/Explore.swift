@@ -13,6 +13,8 @@ struct ExploreRides: View {
     @State private var NavProfile = false
     @State private var RequestRide = false
     @State private var OfferRide = false
+    @State private var refreshScrollView = false
+    @State private var rideFormDidPost = false
     @State var isRideOffer = true
     @State private var isRideInfo = true
     @State private var showCalendar = false
@@ -138,7 +140,7 @@ struct ExploreRides: View {
             
             ZStack{
           
-                ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $isRideInfo, onTripSelected: { trip in
+                ScrollCardsView(isRideOffer: $isRideOffer, isRideInfo: $isRideInfo, isMyGroup: $isRideInfo, needsRefresh: $refreshScrollView, onTripSelected: { trip in
                     selectedTrip = trip
                     isNavigatingToDetails = true
                 })
@@ -184,11 +186,25 @@ struct ExploreRides: View {
                 ProfilePageView()  // Destination for Profile
             }
             .navigationDestination(isPresented: $RequestRide) {
-                RequestRideForm(isRideOffer: $isRideOffer)  // Destination for Home
+                RequestRideForm(isRideOffer: $isRideOffer, didPost: $rideFormDidPost)
             }
             .navigationDestination(isPresented: $isNavigatingToDetails) {
                 if let trip = selectedTrip {
                     DetailsPage(tripInfo: trip)
+                }
+            }
+            .onChange(of: RequestRide) { isPresented in
+                guard !isPresented, rideFormDidPost else { return }
+                rideFormDidPost = false
+                // The form title when isRideOffer==true is "Request A Ride",
+                // so user posted a request → switch to Ride Requests tab.
+                // The onChange(of: isRideOffer) in ScrollCardsView resets+fetches automatically.
+                // If already on the correct tab, trigger a manual refresh instead.
+                let postedRequest = isRideOffer   // was on offers tab → submitted a request
+                if postedRequest {
+                    isRideOffer = false           // flip to requests tab; ScrollCardsView auto-refreshes
+                } else {
+                    refreshScrollView = true      // already on requests tab; just re-fetch
                 }
             }
             .onChange(of: router.shouldPopToRoot) { newValue in

@@ -9,21 +9,46 @@ struct ScrollCardsView: View {
     @Binding var isRideOffer: Bool
     @Binding var isRideInfo: Bool
     @Binding var isMyGroup: Bool
+    @Binding var needsRefresh: Bool
     @StateObject var viewModel: InfiniteScroll
     var onTripSelected: (TripInfo) -> Void
 
-    init(isRideOffer: Binding<Bool>, isRideInfo: Binding<Bool>, isMyGroup: Binding<Bool>, onTripSelected: @escaping (TripInfo) -> Void = { _ in }) {
+    init(isRideOffer: Binding<Bool>, isRideInfo: Binding<Bool>, isMyGroup: Binding<Bool>, needsRefresh: Binding<Bool> = .constant(false), onTripSelected: @escaping (TripInfo) -> Void = { _ in }) {
         _isRideOffer = isRideOffer
         _isRideInfo = isRideInfo
         _isMyGroup = isMyGroup
+        _needsRefresh = needsRefresh
         _viewModel = StateObject(wrappedValue: InfiniteScroll(isRideOffer: isRideOffer, isRideInfo: isRideInfo))
-        self.onTripSelected = onTripSelected // Direct assignment
+        self.onTripSelected = onTripSelected
     }
 
     var body: some View {
-        VStack {
-            if viewModel.isLoading && viewModel.rideCards.isEmpty && viewModel.communityGroups.isEmpty {
+        ScrollView {
+            if let err = viewModel.errorMessage {
+                VStack {
+                    Text("Something went wrong")
+                        .font(.headline)
+                        .padding(.bottom, 4)
+                    Text(err)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.bottom, 20)
+                    Button("Retry") {
+                        if isRideInfo {
+                            viewModel.resetRides()
+                            viewModel.fetchRideCards()
+                        } else {
+                            viewModel.resetGroups()
+                            viewModel.fetchCommunityGroups()
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                .padding()
+                .frame(maxWidth: .infinity, minHeight: 400)
+            } else if viewModel.isLoading && viewModel.rideCards.isEmpty && viewModel.communityGroups.isEmpty {
                 loadingView
+                    .padding(.top, 80)
             } else if !viewModel.isLoading && isRideInfo && viewModel.rideCards.isEmpty {
                 emptyStateView(
                     icon: "car.fill",
@@ -37,28 +62,41 @@ struct ScrollCardsView: View {
                     subtitle: "Communities will appear here once they're created."
                 )
             } else {
-                ScrollView {
-                    LazyVStack {
-                        if isRideInfo {
-                            rideInfoView
-                        } else {
-                            communityGroupsView
-                        }
+                LazyVStack {
+                    if isRideInfo {
+                        rideInfoView
+                    } else {
+                        communityGroupsView
                     }
                 }
-
                 if viewModel.isLoading {
                     loadingMoreView
                 }
             }
         }
+        .refreshable {
+            if isRideInfo {
+                await viewModel.refreshRideCards()
+            } else {
+                await viewModel.refreshCommunityGroups()
+            }
+        }
         .onAppear(perform: onAppear)
         .onChange(of: isRideInfo, perform: onRideInfoChanged)
-        // Step 5a: When the Offers ↔ Requests toggle flips, the old ride list
-        // belongs to a different query. Reset page state and fetch fresh.
         .onChange(of: isRideOffer) { _ in
             viewModel.resetRides()
             viewModel.fetchRideCards()
+        }
+        .onChange(of: needsRefresh) { shouldRefresh in
+            guard shouldRefresh else { return }
+            needsRefresh = false
+            if isRideInfo {
+                viewModel.resetRides()
+                viewModel.fetchRideCards()
+            } else {
+                viewModel.resetGroups()
+                viewModel.fetchCommunityGroups()
+            }
         }
     }
 
@@ -89,7 +127,7 @@ struct ScrollCardsView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity, minHeight: 400)
         .padding(.top, 80)
     }
 

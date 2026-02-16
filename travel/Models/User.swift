@@ -28,12 +28,41 @@ struct User: Identifiable, Decodable, Equatable, Encodable {
     var rideOffers: [TripInfo] = []
     var rideRequests: [TripInfo] = []
 
+    init(id: Int, name: String, rating: Double, numRatings: Int, profilePicURL: String,
+         loudness: Int, musicPreference: String, funFact: String, phoneNumber: String,
+         pronouns: String, grade: String, location: String, email: String) {
+        self.id = id; self.name = name; self.rating = rating; self.numRatings = numRatings
+        self.profilePicURL = profilePicURL; self.loudness = loudness
+        self.musicPreference = musicPreference; self.funFact = funFact
+        self.phoneNumber = phoneNumber; self.pronouns = pronouns
+        self.grade = grade; self.location = location; self.email = email
+    }
+
     // Exclude rideOffers/rideRequests from JSON encoding/decoding —
     // the backend User entity does not contain these fields.
     enum CodingKeys: String, CodingKey {
         case id, name, rating, numRatings, profilePicURL, loudness,
              musicPreference, funFact, phoneNumber, pronouns, grade,
              location, email
+    }
+
+    // Backend stores optional profile fields as SQL NULL → JSON null.
+    // Use decodeIfPresent with "" fallback so the decoder never throws on null strings.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id           = try c.decode(Int.self, forKey: .id)
+        name         = try c.decodeIfPresent(String.self, forKey: .name)         ?? ""
+        rating       = try c.decodeIfPresent(Double.self, forKey: .rating)       ?? 0
+        numRatings   = try c.decodeIfPresent(Int.self,    forKey: .numRatings)   ?? 0
+        profilePicURL = try c.decodeIfPresent(String.self, forKey: .profilePicURL) ?? ""
+        loudness     = try c.decodeIfPresent(Int.self,    forKey: .loudness)     ?? 3
+        musicPreference = try c.decodeIfPresent(String.self, forKey: .musicPreference) ?? ""
+        funFact      = try c.decodeIfPresent(String.self, forKey: .funFact)      ?? ""
+        phoneNumber  = try c.decodeIfPresent(String.self, forKey: .phoneNumber)  ?? ""
+        pronouns     = try c.decodeIfPresent(String.self, forKey: .pronouns)     ?? ""
+        grade        = try c.decodeIfPresent(String.self, forKey: .grade)        ?? ""
+        location     = try c.decodeIfPresent(String.self, forKey: .location)     ?? ""
+        email        = try c.decodeIfPresent(String.self, forKey: .email)        ?? ""
     }
 
     static func ==(lhs: User, rhs: User) -> Bool {
