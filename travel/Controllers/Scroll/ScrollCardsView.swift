@@ -22,6 +22,15 @@ struct ScrollCardsView: View {
 
     var body: some View {
         VStack {
+            // Step 5c: Surface API errors so a blank screen doesn't leave users confused.
+            if let error = viewModel.errorMessage {
+                Text(error)
+                    .font(.footnote)
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+            }
+
             if viewModel.isLoading && viewModel.rideCards.isEmpty && viewModel.communityGroups.isEmpty {
                 loadingView
             } else {
@@ -42,6 +51,12 @@ struct ScrollCardsView: View {
         }
         .onAppear(perform: onAppear)
         .onChange(of: isRideInfo, perform: onRideInfoChanged)
+        // Step 5a: When the Offers ↔ Requests toggle flips, the old ride list
+        // belongs to a different query. Reset page state and fetch fresh.
+        .onChange(of: isRideOffer) { _ in
+            viewModel.resetRides()
+            viewModel.fetchRideCards()
+        }
     }
 
     // Subviews for readability
@@ -125,12 +140,14 @@ struct ScrollCardsView: View {
     }
 
     private func onRideInfoChanged(newValue: Bool) {
-        // Clear the current data and fetch based on the new value
+        // Step 5b: Use the ViewModel's reset helpers so that the page counter
+        // is also zeroed out — not just the data array. Without this, the next
+        // fetch would start at the wrong page.
         if newValue {
-            viewModel.rideCards.removeAll()
+            viewModel.resetRides()
             viewModel.fetchRideCards()
         } else {
-            viewModel.communityGroups.removeAll()
+            viewModel.resetGroups()
             viewModel.fetchCommunityGroups()
         }
     }

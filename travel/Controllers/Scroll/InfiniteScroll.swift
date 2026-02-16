@@ -2,159 +2,145 @@
 //  InfiniteScroll.swift
 //  travel
 //
-//  Created by Lin Jin on 1/18/25.
+//  ViewModel for paginated fetching of TripInfo and GroupModel.
+//
+//  Pagination contract (Spring Boot):
+//    GET /trips?isOffer={bool}&page={n}&size=10
+//    GET /groups?page={n}&size=10
+//    Response envelope: { "content": [...], "last": true/false, "totalPages": N }
 //
 
 import SwiftUI
-import Combine
 
-enum FetchType {
-    case rideCards
-    case communityGroups
+// MARK: - Spring Boot Page<T> envelope
+
+/// Matches the Spring Boot Page<T> JSON shape.
+/// Only decodes the fields InfiniteScroll actually needs.
+private struct Page<T: Decodable>: Decodable {
+    let content: [T]
+    let last: Bool
 }
 
+// MARK: - InfiniteScroll ViewModel
+
+/// @MainActor ensures all @Published mutations happen on the main thread.
+/// Individual async fetch methods suspend off-main during the network call
+/// (URLSession suspension) and resume on main automatically.
+@MainActor
 class InfiniteScroll: ObservableObject {
-    let user1: User
+
+    // MARK: Outputs
+
     @Published var rideCards: [TripInfo] = []
     @Published var communityGroups: [GroupModel] = []
-    @Binding var isRideOffer: Bool
-    @Binding var isRideInfo: Bool
-    
-    @Published var isLoading: Bool = false
-    @Published var hasMoreData: Bool = true
-    private var currentPage = 0  // Spring Data pagination is 0-indexed
-    private var totalPages = 1
-    
+    @Published var isLoading = false
+    @Published var errorMessage: String? = nil
+
+    // MARK: Bindings from parent
+
+    @Binding var isRideOffer: Bool   // true = ride offers, false = ride requests
+    @Binding var isRideInfo: Bool    // true = rides tab,   false = groups tab
+
+    // MARK: Pagination state — separate per data type so switching tabs doesn't corrupt page counters
+
+    private var rideCurrentPage = 0
+    private var rideHasMore = true
+
+    private var groupCurrentPage = 0
+    private var groupHasMore = true
+
+    private let pageSize = 10
+
+    // MARK: Init
+
     init(isRideOffer: Binding<Bool>, isRideInfo: Binding<Bool>) {
-        self.user1 = User(
-            id: 2,
-            name: "Lin Jin",
-            rating: 5.0,
-            numRatings: 5,
-            profilePicURL: "https://i.scdn.co/image/ab67616100005174bcb1c184c322688f10cdce7a",
-            loudness: 5,
-            musicPreference: "ROCK AND ROLLLL",
-            funFact: "pokemon :)",
-            phoneNumber: "xxx-xxx-xxxx",
-            pronouns: "She/Her",
-            grade: "Senior",
-            location: "Cornell University",
-            email: "linjin@gmail.com"
-        )
-        rideCards = [TripInfo(
-            id: 1,
-            driver: user1,
-            price: 15,
-            departureTime: Date(),
-            arrivalTime: Date(),
-            meetingLocation: "161 Ho Plaza, Ithaca, NY",
-            destination: "So Ho, New York, NY",
-            genderPreference: "All females",
-            availableSeats: 2,
-            totalSeats: 4
-        ),
-            TripInfo(
-                id: 2,
-                driver: user1,
-                price: 15,
-                departureTime: Date(),
-                arrivalTime: Date(),
-                meetingLocation: "161 Ho Plaza, Ithaca, NY",
-                destination: "So Ho, New York, NY",
-                genderPreference: "All females",
-                availableSeats: 2,
-                totalSeats: 4
-            ),
-            TripInfo(
-                id: 3,
-                driver: user1,
-                price: 15,
-                departureTime: Date(),
-                arrivalTime: Date(),
-                meetingLocation: "161 Ho Plaza, Ithaca, NY",
-                destination: "So Ho, New York, NY",
-                genderPreference: "All females",
-                availableSeats: 2,
-                totalSeats: 4
-            )]
-        communityGroups = [GroupModel(id: 1, groupName: "Cornell 2025", profilePicture: "https://cdn.britannica.com/08/235008-050-C82C6C44/Cornell-University-Uris-Library-Ithaca-New-York.jpg", isPublic: true, numMembers: 15, filterTags: Set(arrayLiteral: "Popular"), latitude: Double(42.4534), longitude: Double(76.4735))]
-        
         _isRideOffer = isRideOffer
         _isRideInfo = isRideInfo
     }
-    
-    // Generalized API call function
-    func fetchData<T: Decodable>(urlString: String, page: Int, completion: @escaping ([T]) -> Void) {
-        guard !isLoading && hasMoreData else { return }
-        
-        isLoading = true
-        let url = URL(string: urlString + "?page=\(page)")!
-        
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self, let data = data else {
-                DispatchQueue.main.async {
-                    self?.isLoading = false
-                }
-                return
-            }
-            
-            do {
-                let newItems = try JSONDecoder().decode([T].self, from: data)
-                DispatchQueue.main.async {
-                    completion(newItems)
-                    self.isLoading = false
-                    
-                    // Update pagination state
-                    self.currentPage += 1
-                    if self.currentPage > self.totalPages {
-                        self.hasMoreData = false
-                    }
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                }
-            }
-        }.resume()
-    }
-    
-    // Fetch data for rides or community groups
-    func fetchDataForType<T: Decodable>(type: FetchType, completion: @escaping ([T]) -> Void) {
-        let urlString: String
-        switch type {
-        case .rideCards:
-            urlString = "https://your-api-endpoint.com/rides/is_requestblabla\(isRideOffer)"
-        case .communityGroups:
-            urlString = "https://your-api-endpoint.com/communityGroups"
-        }
-        
-        fetchData(urlString: urlString, page: currentPage) { newItems in
-            completion(newItems)
-        }
-    }
-    
-    // Fetch ride cards
+
+    // MARK: - Public API
+
+    /// Call from ScrollCardsView when a ride card is about to disappear off the bottom.
     func fetchRideCards() {
-        fetchDataForType(type: .rideCards) { [weak self] (newRides: [TripInfo]) in
-            self?.rideCards.append(contentsOf: newRides)
-        }
+        guard !isLoading && rideHasMore else { return }
+        Task { await loadRideCards() }
     }
-    
-    // Fetch community groups
+
+    /// Call from ScrollCardsView when a group card is about to disappear off the bottom.
     func fetchCommunityGroups() {
-        fetchDataForType(type: .communityGroups) { [weak self] (newGroups: [GroupModel]) in
-            self?.communityGroups.append(contentsOf: newGroups)
+        guard !isLoading && groupHasMore else { return }
+        Task { await loadCommunityGroups() }
+    }
+
+    /// Dispatched by ScrollCardsView's `.onAppear` / trigger logic.
+    func checkIfNeedMoreData() {
+        if isRideInfo {
+            fetchRideCards()
+        } else {
+            fetchCommunityGroups()
         }
     }
-    
-    // Trigger data load based on `isRideInfo`
-    func checkIfNeedMoreData() {
-        if !isLoading && hasMoreData {
-            if isRideInfo {
-                fetchRideCards()
-            } else {
-                fetchCommunityGroups()
-            }
+
+    // MARK: - Reset helpers (call before re-fetching after a toggle change)
+
+    /// Clears ride data and resets the ride page counter.
+    /// Must be called when isRideOffer flips (Offers ↔ Requests)
+    /// or when switching back to the rides tab.
+    func resetRides() {
+        rideCards = []
+        rideCurrentPage = 0
+        rideHasMore = true
+        errorMessage = nil
+    }
+
+    /// Clears group data and resets the group page counter.
+    /// Must be called when switching to the groups tab.
+    func resetGroups() {
+        communityGroups = []
+        groupCurrentPage = 0
+        groupHasMore = true
+        errorMessage = nil
+    }
+
+    // MARK: - Private fetch logic
+
+    /// Ride offers:  GET /trips/offers?page=N&size=10           → Page<TripInfo>
+    /// Ride requests: GET /trips/requests/paginated?page=N&size=10 → Page<TripInfo>
+    /// isRideOffer selects which endpoint to call.
+    private func loadRideCards() async {
+        isLoading = true
+        errorMessage = nil
+        defer { isLoading = false }
+
+        let path: String
+        if isRideOffer {
+            path = "/trips/offers?page=\(rideCurrentPage)&size=\(pageSize)"
+        } else {
+            path = "/trips/requests/paginated?page=\(rideCurrentPage)&size=\(pageSize)"
+        }
+        do {
+            let page: Page<TripInfo> = try await APIClient.shared.request(path)
+            rideCards.append(contentsOf: page.content)
+            rideCurrentPage += 1
+            rideHasMore = !page.last
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    /// Groups: GET /groups → List<CommunityGroup> (not paginated on the backend).
+    /// Fetches all groups in one call and marks groupHasMore = false afterwards.
+    private func loadCommunityGroups() async {
+        isLoading = true
+        errorMessage = nil
+        defer { isLoading = false }
+
+        do {
+            let groups: [GroupModel] = try await APIClient.shared.request("/groups")
+            communityGroups = groups
+            groupHasMore = false   // single-page response — no more data to load
+        } catch {
+            errorMessage = error.localizedDescription
         }
     }
 }
