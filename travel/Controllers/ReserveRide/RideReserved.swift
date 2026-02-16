@@ -8,12 +8,12 @@ import SwiftUI
 
 struct RideReserved: View {
     var reserveOrOffer: String
+    @EnvironmentObject var router: NavigationRouter
     @State private var NavHome = false
     @State private var NavCommunity = false
     @State private var NavProfile = false
-    
+
     var body: some View {
-        NavigationStack { // Wrap everything inside a NavigationStack
             ZStack {
                 // Background Layer
                 GeometryReader { geometry in
@@ -79,8 +79,8 @@ struct RideReserved: View {
                 .zIndex(1) // Make sure foreground content is above the background image
 
             }
-            .navigationDestination(isPresented: $NavHome) {
-                ExploreRides() // Destination for Home
+            .onChange(of: NavHome) { newValue in
+                if newValue { router.popToRoot() }
             }
             .navigationDestination(isPresented: $NavCommunity) {
                 GroupView() // Destination for Community
@@ -88,7 +88,6 @@ struct RideReserved: View {
             .navigationDestination(isPresented: $NavProfile) {
                 ProfilePageView() // Destination for Profile
             }
-        }
     }
 }
 

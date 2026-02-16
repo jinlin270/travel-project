@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RequestRideForm: View {
     @StateObject private var viewModel = FilterViewModel()
-    @State private var NavHome = false
+    @Environment(\.dismiss) private var dismiss
     @State private var saveTrip: Bool = false
     @Binding var isRideOffer : Bool
 
@@ -39,7 +39,7 @@ struct RequestRideForm: View {
                             Spacer()
                             Button(action: {
                                 // Exit button action here
-                                NavHome = true
+                                dismiss()
                             }) {
                                 Image("close2")
                                     .resizable()
@@ -122,7 +122,7 @@ struct RequestRideForm: View {
                 
                 
                 Button(action: {
-                    NavHome = true
+                    dismiss()
                     //TODO: Backend post
                 }) {
                     HStack(alignment: .center, spacing: 0) {
@@ -145,8 +145,6 @@ struct RequestRideForm: View {
                 
             } .navigationBarHidden(true) //for hiding back button in uikit
                 .navigationBarBackButtonHidden(true) //for hiding back button in swiftui
-                .navigationDestination(isPresented: $NavHome) {
-                    ExploreRides()}
                
     }
 }

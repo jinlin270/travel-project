@@ -10,6 +10,7 @@ import SwiftUI
 import Foundation
 
 struct GroupView: View {
+    @EnvironmentObject var router: NavigationRouter
     @State private var NavHome = false
     @State private var NavCommunity = false
     @State private var NavProfile = false
@@ -90,8 +91,9 @@ struct GroupView: View {
             )
         }
         .frame(maxWidth: .infinity)
-            .navigationDestination(isPresented: $NavHome) {
-                ExploreRides()  // Destination for Home
+            .navigationBarBackButtonHidden(true)
+            .onChange(of: NavHome) { newValue in
+                if newValue { router.popToRoot() }
             }
             .navigationDestination(isPresented: $NavProfile) {
                 ProfilePageView()  // Destination for Profile

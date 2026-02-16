@@ -7,6 +7,7 @@ import SwiftUI
 import Foundation
 
 struct ExploreRides: View {
+    @EnvironmentObject var router: NavigationRouter
     @State private var NavHome = false
     @State private var NavCommunity = false
     @State private var NavProfile = false
@@ -188,6 +189,15 @@ struct ExploreRides: View {
             .navigationDestination(isPresented: $isNavigatingToDetails) {
                 if let trip = selectedTrip {
                     DetailsPage(tripInfo: trip)
+                }
+            }
+            .onChange(of: router.shouldPopToRoot) { newValue in
+                if newValue {
+                    NavCommunity = false
+                    NavProfile = false
+                    RequestRide = false
+                    isNavigatingToDetails = false
+                    router.shouldPopToRoot = false
                 }
             }
             

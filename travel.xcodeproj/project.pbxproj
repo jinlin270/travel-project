@@ -57,6 +57,7 @@
 		20738A8E2D42AAF900E6B0A8 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A8D2D42AAF700E6B0A8 /* CheckoutView.swift */; };
 		20738A902D42AE5600E6B0A8 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A8F2D42AE4A00E6B0A8 /* Numbers.swift */; };
 		20738A922D42B1FE00E6B0A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A912D42B1FA00E6B0A8 /* Constants.swift */; };
+		DBF87BA40D644B23B6080355 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4DBB926A14DBC91897AC6 /* NavigationRouter.swift */; };
 		20738A952D42BEFB00E6B0A8 /* RideReserved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A942D42BEE900E6B0A8 /* RideReserved.swift */; };
 		20738A972D42C9F300E6B0A8 /* LuggageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A962D42C9EE00E6B0A8 /* LuggageModel.swift */; };
 		20738A992D42D47F00E6B0A8 /* RegularRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20738A982D42D47800E6B0A8 /* RegularRadioButton.swift */; };
@@ -134,6 +135,7 @@
 		20738A8D2D42AAF700E6B0A8 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		20738A8F2D42AE4A00E6B0A8 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		20738A912D42B1FA00E6B0A8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6AB4DBB926A14DBC91897AC6 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		20738A942D42BEE900E6B0A8 /* RideReserved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideReserved.swift; sourceTree = "<group>"; };
 		20738A962D42C9EE00E6B0A8 /* LuggageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuggageModel.swift; sourceTree = "<group>"; };
 		20738A982D42D47800E6B0A8 /* RegularRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularRadioButton.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			children = (
 				20738A962D42C9EE00E6B0A8 /* LuggageModel.swift */,
 				20738A912D42B1FA00E6B0A8 /* Constants.swift */,
+				6AB4DBB926A14DBC91897AC6 /* NavigationRouter.swift */,
 				20738A812D41C44500E6B0A8 /* MessageModel.swift */,
 				20738A772D41569600E6B0A8 /* GroupModel.swift */,
 				20738A6A2D408A8F00E6B0A8 /* MapModel.swift */,
@@ -530,6 +533,7 @@
 				20738A8A2D41C95300E6B0A8 /* SearchButton.swift in Sources */,
 				20BA9A5D2D3EB932006E44E9 /* Buttons.swift in Sources */,
 				20738A922D42B1FE00E6B0A8 /* Constants.swift in Sources */,
+				DBF87BA40D644B23B6080355 /* NavigationRouter.swift in Sources */,
 				20BA9A4D2D3DA188006E44E9 /* RequestRideCardView.swift in Sources */,
 				20076E352CAA2BE000D79D60 /* WelcomeController3.swift in Sources */,
 				20738A992D42D47F00E6B0A8 /* RegularRadioButton.swift in Sources */,

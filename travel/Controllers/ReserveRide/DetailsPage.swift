@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailsPage: View {
     var tripInfo: TripInfo
-    @State private var NavExplore = false
+    @Environment(\.dismiss) private var dismiss
     @State private var NavCheckout = false
     @StateObject private var imageFetcher = ImageFetcher()
 
@@ -17,7 +17,7 @@ struct DetailsPage: View {
         VStack {//VStack1
             HStack{
                 Button(action: {
-                    NavExplore = true
+                    dismiss()
                 }) {
                     Image("SimpleArrowLeft")
                         .resizable()
@@ -90,8 +90,6 @@ struct DetailsPage: View {
                 .padding(.bottom, 16)
             
         }
-        .navigationDestination(isPresented: $NavExplore) {
-            ExploreRides()}
         .navigationDestination(isPresented: $NavCheckout) {
             CheckoutView(tripInfo: tripInfo)
                 .navigationBarHidden(true) //for hiding back button in uikit

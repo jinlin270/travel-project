@@ -25,6 +25,7 @@ struct RootView: View {
     // OnboardingViewModel lives here so it survives across the onboarding screens
     // and can be injected into the SwiftUI environment cleanly.
     @StateObject private var onboardingVM = OnboardingViewModel()
+    @StateObject private var router = NavigationRouter()
 
     var body: some View {
         if !authManager.isAuthenticated {
@@ -38,7 +39,10 @@ struct RootView: View {
                 .environmentObject(onboardingVM)
         } else {
             // Fully authenticated with complete profile → main app
-            ExploreRides()
+            NavigationStack {
+                ExploreRides()
+            }
+            .environmentObject(router)
         }
     }
 }
