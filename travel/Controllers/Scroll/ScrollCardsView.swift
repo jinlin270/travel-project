@@ -22,17 +22,20 @@ struct ScrollCardsView: View {
 
     var body: some View {
         VStack {
-            // Step 5c: Surface API errors so a blank screen doesn't leave users confused.
-            if let error = viewModel.errorMessage {
-                Text(error)
-                    .font(.footnote)
-                    .foregroundColor(.red)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-            }
-
             if viewModel.isLoading && viewModel.rideCards.isEmpty && viewModel.communityGroups.isEmpty {
                 loadingView
+            } else if !viewModel.isLoading && isRideInfo && viewModel.rideCards.isEmpty {
+                emptyStateView(
+                    icon: "car.fill",
+                    title: isRideOffer ? "No rides available" : "No ride requests yet",
+                    subtitle: isRideOffer ? "Check back later for available rides." : "Be the first to post a ride request!"
+                )
+            } else if !viewModel.isLoading && !isRideInfo && viewModel.communityGroups.isEmpty {
+                emptyStateView(
+                    icon: "person.3.fill",
+                    title: "No groups yet",
+                    subtitle: "Communities will appear here once they're created."
+                )
             } else {
                 ScrollView {
                     LazyVStack {
@@ -70,6 +73,24 @@ struct ScrollCardsView: View {
         ProgressView("Loading more...")
             .progressViewStyle(CircularProgressViewStyle())
             .padding()
+    }
+
+    private func emptyStateView(icon: String, title: String, subtitle: String) -> some View {
+        VStack(spacing: 16) {
+            Image(systemName: icon)
+                .font(.system(size: 48))
+                .foregroundColor(.gray.opacity(0.5))
+            Text(title)
+                .font(.headline)
+                .foregroundColor(.primary)
+            Text(subtitle)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.top, 80)
     }
 
     private var rideInfoView: some View {

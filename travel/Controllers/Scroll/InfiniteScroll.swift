@@ -123,6 +123,9 @@ class InfiniteScroll: ObservableObject {
             rideCards.append(contentsOf: page.content)
             rideCurrentPage += 1
             rideHasMore = !page.last
+        } catch is DecodingError {
+            // Backend returned empty or unexpected format — treat as no results
+            rideHasMore = false
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -139,6 +142,9 @@ class InfiniteScroll: ObservableObject {
             let groups: [GroupModel] = try await APIClient.shared.request("/groups")
             communityGroups = groups
             groupHasMore = false   // single-page response — no more data to load
+        } catch is DecodingError {
+            // Backend returned empty or unexpected format — treat as no results
+            groupHasMore = false
         } catch {
             errorMessage = error.localizedDescription
         }
