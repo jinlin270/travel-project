@@ -73,7 +73,9 @@ struct CommunityBar: View {
 
                 }
                 
-            }.padding(24)
+            }
+            .padding(.horizontal, 24)
+            .padding(.vertical, 12)
 
             
             ZStack{

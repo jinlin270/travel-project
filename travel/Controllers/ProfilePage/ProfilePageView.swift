@@ -200,6 +200,7 @@ struct ProfilePageView: View {
 
                     
                     
+                    Spacer()
                     BottomNavigationBar(
                         NavHome: $NavHome,
                         NavCommunity: $NavCommunity,

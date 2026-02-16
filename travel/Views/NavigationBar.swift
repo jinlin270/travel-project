@@ -12,10 +12,7 @@ struct BottomNavigationBar: View {
     @Binding var NavProfile : Bool
 
     var body: some View {
-        VStack {
-            Spacer().background(.clear) // Push the navigation bar to the bottom of the screen
-
-            HStack(alignment: .top, spacing: 8) {
+        HStack(alignment: .top, spacing: 8) {
                 // Add your navigation bar items here
                 Button(action: {
                     NavHome = true
@@ -61,15 +58,11 @@ struct BottomNavigationBar: View {
                     }.frame(maxWidth: .infinity)
                 }
             }
-            .frame(height: 80)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 0)
             .padding(.top, 12)
-            .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
-            .background(Constants.blue)
-        }
-        .edgesIgnoringSafeArea(.bottom)
-
+            .padding(.horizontal, 8)
+            .frame(height: 80)
+            .frame(maxWidth: .infinity)
+            .background(Constants.blue.ignoresSafeArea(edges: .bottom))
     }
 }
 
